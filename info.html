@@ -3,38 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#1B3A8C">
 <title>المعلومات · فرن الحارة</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Readex+Pro:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body data-page="info">
 <div class="app">
   <div class="demo pad" data-t="demo"></div>
-  <header class="topbar"><div class="topbar-inner pad"><h1 data-t="navInfo"></h1><button class="lang-sm" type="button" data-lang data-t="langBtn"></button></div></header>
+  <header class="topbar"><div class="topbar-inner pad"><h1 data-t="navInfo"></h1><button class="lang-btn" type="button" data-lang data-t="langBtn"></button></div></header>
 
   <section class="pad">
-    <div class="status-card"><span class="status" data-status></span><span data-status-sub></span></div>
+    <p class="status-line" data-statusline><span class="dot"></span><span data-status-text></span></p>
   </section>
 
-  <section class="block pad">
+  <section class="info-sec pad">
     <h2 class="sub-h" data-t="hoursTitle"></h2>
     <ul class="hours" id="hours"></ul>
   </section>
 
-  <section class="block pad">
+  <section class="info-sec pad">
     <h2 class="sub-h" data-t="contactTitle"></h2>
-    <dl class="kv">
-      <div><dt data-t="addressL"></dt><dd data-t="addressV"></dd></div>
-      <div><dt data-t="phoneL"></dt><dd data-t="phoneV"></dd></div>
-      <div><dt data-t="orderL"></dt><dd data-t="orderV"></dd></div>
-      <div><dt data-t="payL"></dt><dd data-t="payV"></dd></div>
-    </dl>
+    <div id="kvRows"></div>
   </section>
 
-  <section class="block pad">
+  <section class="info-sec pad">
     <h2 class="sub-h" data-t="aboutTitle"></h2>
     <p class="about" data-t="aboutText"></p>
   </section>

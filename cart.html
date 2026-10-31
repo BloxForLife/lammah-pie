@@ -3,20 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#1B3A8C">
 <title>السلة · فرن الحارة</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Readex+Pro:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body data-page="cart">
 <div class="app">
   <div class="demo pad" data-t="demo"></div>
-  <header class="topbar"><div class="topbar-inner pad"><h1 data-t="navCart"></h1><button class="lang-sm" type="button" data-lang data-t="langBtn"></button></div></header>
+  <header class="topbar"><div class="topbar-inner pad"><h1 data-t="navCart"></h1><button class="lang-btn" type="button" data-lang data-t="langBtn"></button></div></header>
 
   <section class="empty-state pad" id="cartEmpty" hidden>
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8z"/><path d="M9 8V7a3 3 0 0 1 6 0v1"/></svg>
     <h2 data-t="emptyCart"></h2>
     <p data-t="emptyCartSub"></p>
     <a class="btn btn-primary" href="menu.html" data-t="browseMenu"></a>
@@ -25,7 +24,7 @@
   <div id="cartFull" hidden>
     <section class="pad"><div id="cartItems"></div></section>
 
-    <section class="block pad">
+    <section class="info-sec pad">
       <span class="sub-h" data-t="orderType"></span>
       <div class="seg" role="group">
         <button type="button" data-type="pickup" data-t="pickup"></button>
@@ -33,14 +32,13 @@
       </div>
     </section>
 
-    <section class="block pad">
+    <section class="info-sec pad">
       <label class="sub-h" for="notes" data-t="notesL"></label>
       <textarea id="notes" data-ph="notesPh"></textarea>
     </section>
 
-    <section class="block pad">
-      <div class="sumline"><span data-t="itemsLabel"></span><span id="sumCount"></span></div>
-      <div class="sumline total"><span data-t="total"></span><span id="sumTotal"></span></div>
+    <section class="info-sec pad">
+      <div id="sumRows"></div>
       <button class="wa-btn" id="sendBtn" type="button" data-t="send"></button>
       <p class="toast" id="toast" hidden></p>
       <details>

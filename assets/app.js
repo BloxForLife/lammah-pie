@@ -7,8 +7,14 @@
       demo: "نسخة تجريبية للعرض. الاسم والأسعار والمعلومات للتوضيح فقط.",
       langBtn: "English",
       brand: "فرن الحارة",
-      cuisine: "فطائر · مشلتت · كريب · مشروبات",
-      modes: "استلام · توصيل",
+      tagline: "فطائر مصرية على الصاج",
+      featureNote: "على الطريقة المصرية، ينخبز وقت ما تطلب.",
+      addToCart: "أضف للسلة",
+      menuTitle: "المنيو",
+      visitTitle: "زورونا",
+      hoursAddress: "الأوقات والعنوان",
+      todayL: "اليوم",
+      itemsFrom: "من",
       openNow: "مفتوح الآن",
       closedNow: "مغلق الآن",
       closes: "يغلق",
@@ -68,8 +74,14 @@
       demo: "Demo site. The name, prices and details are examples.",
       langBtn: "عربي",
       brand: "Hara Bakehouse",
-      cuisine: "Feteer · Meshaltet · Crepes · Drinks",
-      modes: "Pickup · Delivery",
+      tagline: "Egyptian feteer off the sajj",
+      featureNote: "Egyptian style, baked when you order.",
+      addToCart: "Add to cart",
+      menuTitle: "The menu",
+      visitTitle: "Visit us",
+      hoursAddress: "Hours & address",
+      todayL: "Today",
+      itemsFrom: "from",
       openNow: "Open now",
       closedNow: "Closed now",
       closes: "Closes",
@@ -156,7 +168,6 @@
       { id: "d4", price: 9,  ar: ["سحلب", "سحلب سخن بالقرفة"], en: ["Sahlab", "Warm sahlab with cinnamon"] }
     ]}
   ];
-  var PICKS = ["s1", "w1", "c3", "d1"];
 
   /* Opening hours by weekday (0 = Sunday). Hours past 24 run into the next morning: 26 = 2am. */
   var HOURS = [
@@ -210,8 +221,9 @@
     return { open: false, at: m < t.o ? t.o : HOURS[(d + 1) % 7].o };
   }
 
-  function addHTML(i){
+  function addHTML(i, wide){
     var q = cart[i.id] || 0;
+    if (!q && wide) return '<button type="button" class="btn btn-primary add-wide" data-act="inc" data-id="' + i.id + '">' + T("addToCart") + '</button>';
     if (!q) return '<button type="button" class="add-btn" data-act="inc" data-id="' + i.id + '" aria-label="' + T("add") + ': ' + nm(i) + '">+</button>';
     return '<div class="stepper">' +
       '<button type="button" data-act="dec" data-id="' + i.id + '" aria-label="' + T("remove") + ': ' + nm(i) + '">−</button>' +
@@ -220,11 +232,14 @@
     '</div>';
   }
   function refreshAdd(id, act, box){
-    document.querySelectorAll('[data-add="' + id + '"]').forEach(function(el){ el.innerHTML = addHTML(ALL[id]); });
+    document.querySelectorAll('[data-add="' + id + '"]').forEach(function(el){ el.innerHTML = addHTML(ALL[id], el.hasAttribute("data-wide")); });
     if (box) {
       var f = box.querySelector('[data-act="' + act + '"]') || box.querySelector('[data-act="inc"]');
       if (f) f.focus({ preventScroll: true });
     }
+  }
+  function leader(left, right){
+    return '<div class="lead">' + left + '<span class="dots" aria-hidden="true"></span>' + right + '</div>';
   }
 
   /* ---------- Shared parts of every page ---------- */
@@ -253,13 +268,12 @@
       if (a.getAttribute("data-nav") === page) a.setAttribute("aria-current", "page");
       else a.removeAttribute("aria-current");
     });
-    var s = openState();
-    document.querySelectorAll("[data-status]").forEach(function(el){
-      el.textContent = s.open ? T("openNow") : T("closedNow");
+    var s = openState(), sep = lang === "ar" ? "، " : ", ";
+    var line = (s.open ? T("openNow") : T("closedNow")) + sep + (s.open ? T("closes") : T("opens")).toLowerCase() + " " + fmtHour(s.at);
+    document.querySelectorAll("[data-statusline]").forEach(function(el){
       el.classList.toggle("is-open", s.open);
-    });
-    document.querySelectorAll("[data-status-sub]").forEach(function(el){
-      el.textContent = (s.open ? T("closes") : T("opens")) + " " + fmtHour(s.at);
+      var t = el.querySelector("[data-status-text]");
+      if (t) t.textContent = line;
     });
     document.title = (TITLES[page] ? T(TITLES[page]) + " · " : "") + T("brand");
     renderBadge();
@@ -268,18 +282,22 @@
   /* ---------- Home ---------- */
   var Home = {
     render: function(){
-      var cats = T("cats");
-      $("picks").innerHTML = PICKS.map(function(id){
-        var i = ALL[id], c = CAT_OF[id];
-        return '<article class="pick">' +
-          '<span class="cat-label c-' + c + '">' + cats[c] + '</span>' +
-          '<h3>' + nm(i) + '</h3><p>' + ds(i) + '</p>' +
-          '<div class="pick-foot"><span class="price">' + money(i.price) + '</span>' +
-          '<div class="add" data-add="' + id + '">' + addHTML(i) + '</div></div></article>';
+      var f = ALL.w1, cats = T("cats");
+      document.querySelector("[data-feat-name]").textContent = nm(f);
+      document.querySelector("[data-feat-price]").textContent = money(f.price);
+      document.querySelector("[data-feat-desc]").textContent = ds(f) + ".";
+      document.querySelector('[data-add="w1"]').innerHTML = addHTML(f, true);
+      $("catRows").innerHTML = MENU.map(function(c){
+        var min = Math.min.apply(null, c.items.map(function(i){ return i.price; }));
+        return '<a class="cat-row" href="menu.html#' + c.id + '">' +
+          leader('<strong>' + cats[c.id] + '</strong>', '<span class="meta">' + itemsCount(c.items.length) + (lang === "ar" ? "، " : ", ") + T("itemsFrom") + ' ' + money(min) + '</span>') +
+        '</a>';
       }).join("");
-      $("catsGrid").innerHTML = MENU.map(function(c){
-        return '<a class="cat-tile c-' + c.id + '" href="menu.html#' + c.id + '"><strong>' + cats[c.id] + '</strong><span>' + itemsCount(c.items.length) + '</span></a>';
-      }).join("");
+      var h = HOURS[new Date().getDay()];
+      $("visitRows").innerHTML =
+        '<div class="visit-row">' + leader('<span class="k">' + T("todayL") + '</span>', '<span class="v">' + fmtHour(h.o) + ' – ' + fmtHour(h.c) + '</span>') + '</div>' +
+        '<div class="visit-row">' + leader('<span class="k">' + T("addressL") + '</span>', '<span class="v">' + T("addressV") + '</span>') + '</div>' +
+        '<div class="visit-row">' + leader('<span class="k">' + T("orderL") + '</span>', '<span class="v">' + T("orderV") + '</span>') + '</div>';
     },
     onCart: function(id, act, box){ refreshAdd(id, act, box); }
   };
@@ -313,9 +331,11 @@
         return '<section class="menu-section pad" id="sec-' + c.id + '" data-sec="' + c.id + '"><h2>' + cats[c.id] + '</h2>' +
           c.items.map(function(i){
             var hay = (i.ar.join(" ") + " " + i.en.join(" ")).toLowerCase();
-            return '<div class="row" data-row="' + i.id + '" data-search="' + hay + '">' +
-              '<div class="row-text"><h3>' + nm(i) + (i.tag ? '<span class="badge">' + T("egyptian") + '</span>' : '') + '</h3>' +
-              '<p class="desc">' + ds(i) + '</p><span class="price">' + money(i.price) + '</span></div>' +
+            return '<div class="item" data-row="' + i.id + '" data-search="' + hay + '">' +
+              '<div class="item-main">' +
+                leader('<h3>' + nm(i) + (i.tag ? '<span class="tag">' + T("egyptian") + '</span>' : '') + '</h3>', '<span class="price">' + money(i.price) + '</span>') +
+                '<p class="desc">' + ds(i) + '</p>' +
+              '</div>' +
               '<div class="add" data-add="' + i.id + '">' + addHTML(i) + '</div></div>';
           }).join("") + '</section>';
       }).join("") + '<p class="empty pad" id="empty" hidden></p>';
@@ -419,15 +439,17 @@
       if (empty) return;
       $("cartItems").innerHTML = list.map(function(id){
         var i = ALL[id];
-        return '<div class="cart-row"><div class="name">' + nm(i) + '<div class="sub">' + money(i.price * cart[id]) + '</div></div>' +
-          '<div class="add" data-add="' + id + '">' + addHTML(i) + '</div></div>';
+        return '<div class="cart-line"><div class="item-main">' +
+          leader('<strong>' + nm(i) + '</strong><span class="qty-x">× ' + cart[id] + '</span>', '<span class="price">' + money(i.price * cart[id]) + '</span>') +
+          '</div><div class="add" data-add="' + id + '">' + addHTML(i) + '</div></div>';
       }).join("");
       document.querySelectorAll("[data-type]").forEach(function(b){
         b.setAttribute("aria-pressed", b.getAttribute("data-type") === order.type ? "true" : "false");
       });
       if ($("notes").value !== order.notes) $("notes").value = order.notes;
-      $("sumCount").textContent = count();
-      $("sumTotal").textContent = money(total());
+      $("sumRows").innerHTML =
+        '<div class="sum">' + leader('<span class="k">' + T("itemsLabel") + '</span>', '<span>' + count() + '</span>') + '</div>' +
+        '<div class="sum-total">' + leader('<span>' + T("total") + '</span>', '<span class="price">' + money(total()) + '</span>') + '</div>';
       $("msg").value = message();
     },
     onCart: function(id, act){
@@ -443,9 +465,12 @@
       var today = new Date().getDay(), days = T("days");
       $("hours").innerHTML = HOURS.map(function(h, d){
         var isToday = d === today;
-        return '<li' + (isToday ? ' class="today"' : '') + '><span>' + days[d] +
-          (isToday ? '<span class="today-tag">' + T("today") + '</span>' : '') + '</span>' +
-          '<span>' + fmtHour(h.o) + ' – ' + fmtHour(h.c) + '</span></li>';
+        return '<li' + (isToday ? ' class="today"' : '') + '>' +
+          leader('<span>' + days[d] + (isToday ? '<span class="today-tag">' + T("today") + '</span>' : '') + '</span>', '<span>' + fmtHour(h.o) + ' – ' + fmtHour(h.c) + '</span>') +
+        '</li>';
+      }).join("");
+      $("kvRows").innerHTML = [["addressL","addressV"],["phoneL","phoneV"],["orderL","orderV"],["payL","payV"]].map(function(p){
+        return '<div class="kv-row">' + leader('<span class="k">' + T(p[0]) + '</span>', '<span class="v">' + T(p[1]) + '</span>') + '</div>';
       }).join("");
     }
   };
