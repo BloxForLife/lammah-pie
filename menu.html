@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFFFFF">
+<title>المنيو · فرن الحارة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="menu">
+<div class="app">
+  <div class="demo pad" data-t="demo"></div>
+  <header class="topbar"><div class="topbar-inner pad"><h1 data-t="navMenu"></h1><button class="lang-sm" type="button" data-lang data-t="langBtn"></button></div></header>
+
+  <div class="search pad"><input id="search" type="search" autocomplete="off" data-ph="searchPh"></div>
+  <nav class="tabs" aria-label="Categories"><div class="tabs-inner pad" id="tabsInner"></div></nav>
+  <div id="menu"></div>
+
+  <p class="foot pad" data-t="footer"></p>
+</div>
+
+<div class="cartbar" id="cartbar" hidden>
+  <a class="cartbar-btn" href="cart.html"><span class="count" id="cartCount"></span><span data-t="viewCart"></span><span class="amt" id="cartTotal"></span></a>
+</div>
+
+<nav class="bnav" aria-label="Main">
+  <div class="bnav-inner">
+    <a href="index.html" data-nav="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1H15v-6H9v6H4.5a1 1 0 0 1-1-1z"/></svg><span data-t="navHome"></span></a>
+    <a href="menu.html" data-nav="menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14M5 10h14M5 15h14M5 20h9"/></svg><span data-t="navMenu"></span></a>
+    <a href="cart.html" data-nav="cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8z"/><path d="M9 8V7a3 3 0 0 1 6 0v1"/></svg><span data-t="navCart"></span><i class="nbadge" id="navBadge" hidden></i></a>
+    <a href="info.html" data-nav="info"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.8v.2"/></svg><span data-t="navInfo"></span></a>
+  </div>
+</nav>
+<script src="assets/app.js"></script>
+</body>
+</html>
