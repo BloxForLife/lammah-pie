@@ -1,5 +1,5 @@
 /* Direction: an Egyptian feteer shop. The hero is the shop sign (deep sign-blue, Ruqaa lettering in ghee gold,
-   a painted double frame). Menus, hours and the cart read like a printed menu board: name, dotted leader, price.
+   a painted double frame). Menus and hours read like a printed menu board: name, dotted leader, price.
    Everything else stays quiet: paper-white, blue-grey ink, thin rules. Light only, on purpose. */
 :root{
   --page:#E8EBF2;
@@ -15,7 +15,6 @@
   --butter-ink:#6B4E00;
   --on-dark:#FFFFFF;
   --open:#1E7F3C;
-  --wa:#128C4A;
   --nav-h:62px;
   --script:"Aref Ruqaa","Readex Pro",serif;
   --sans:"Readex Pro",system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
@@ -26,7 +25,6 @@
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--page);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;
   padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom,0px))}
-body.has-cartbar{padding-bottom:calc(var(--nav-h) + 74px + env(safe-area-inset-bottom,0px))}
 h1,h2,h3,p{margin:0}
 a{color:inherit}
 button,input,textarea{font:inherit;color:inherit}
@@ -48,10 +46,6 @@ button{cursor:pointer}
 .btn{display:flex;align-items:center;justify-content:center;border:0;border-radius:10px;padding:13px 16px;font-weight:600;text-decoration:none;line-height:1.3;text-align:center}
 .btn-primary{background:var(--sign);color:var(--on-dark)}
 .btn-outline{background:var(--paper);color:var(--ink);border:1.5px solid var(--line)}
-.add-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--sign);background:var(--paper);color:var(--sign);font-size:1.35rem;line-height:1;display:grid;place-items:center;padding:0}
-.stepper{display:inline-flex;align-items:center;border-radius:999px;background:var(--sign);color:var(--on-dark)}
-.stepper button{width:38px;height:38px;border:0;background:none;color:inherit;font-size:1.15rem;line-height:1;padding:0}
-.stepper span{min-width:20px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
 .lang-btn{border:1px solid rgba(255,255,255,.4);background:transparent;color:var(--on-dark);border-radius:999px;padding:5px 13px;font-weight:600;font-size:.82rem}
 
 /* Home: the shop sign */
@@ -73,10 +67,7 @@ button{cursor:pointer}
 .price-lg{font-size:1.35rem;font-weight:700;color:var(--sign);font-variant-numeric:tabular-nums;white-space:nowrap}
 .feature p{max-width:42ch}
 .feature-note{color:var(--butter-ink);font-size:.86rem;margin-top:4px}
-.feature-add{margin-top:16px}
-.add-wide{width:100%}
-.feature .stepper{width:100%;justify-content:space-between}
-.feature .stepper button{width:56px}
+.feature-link{margin-top:16px}
 
 .sec{padding-block:22px 10px;border-top:1px solid var(--line)}
 .sec-h{font-family:var(--script);font-weight:700;font-size:1.75rem;line-height:1.3;margin-bottom:4px}
@@ -105,50 +96,17 @@ button{cursor:pointer}
 .tab[aria-current="true"]{color:var(--ink);border-bottom-color:var(--butter)}
 .menu-section{padding-block:20px 4px;scroll-margin-top:calc(108px + env(safe-area-inset-top,0px))}
 .menu-section h2{font-family:var(--script);font-weight:700;font-size:1.8rem;line-height:1.3}
-.item{display:grid;grid-template-columns:1fr auto;column-gap:14px;align-items:center;padding-block:14px;border-bottom:1px solid var(--line)}
+.item{padding-block:14px;border-bottom:1px solid var(--line)}
 .item:last-child{border-bottom:0}
-.item-main{min-width:0}
 .item h3{font-size:1.02rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}
 .item .desc{color:var(--muted);font-size:.86rem;margin-top:3px}
 .tag{font-size:.72rem;font-weight:600;background:var(--butter-tint);color:var(--butter-ink);padding:1px 7px;border-radius:4px}
 .empty{color:var(--muted);text-align:center;padding-block:36px}
 
-.cartbar{position:fixed;left:0;right:0;bottom:calc(var(--nav-h) + env(safe-area-inset-bottom,0px));z-index:20;padding-block:8px;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.cartbar-btn{max-width:608px;margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;
-  background:var(--sign);color:var(--on-dark);border-radius:12px;padding:13px 16px;font-weight:600;text-decoration:none;box-shadow:0 6px 18px rgba(20,44,110,.28)}
-.count{background:var(--butter);color:var(--ink);border-radius:6px;padding:1px 8px;min-width:28px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
-.amt{font-weight:700;font-variant-numeric:tabular-nums}
 
-/* Cart */
-.empty-state{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding-block:64px 48px}
-.empty-state h2{font-family:var(--script);font-weight:700;font-size:1.9rem;line-height:1.3}
-.empty-state p{color:var(--muted);max-width:30ch}
-.empty-state .btn{margin-top:10px;min-width:200px}
-.cart-line{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding-block:14px;border-bottom:1px solid var(--line)}
-.cart-line:last-child{border-bottom:0}
-.cart-line strong{font-weight:600}
-.qty-x{color:var(--muted);font-variant-numeric:tabular-nums}
-.sub-h{display:block;font-family:var(--script);font-weight:700;font-size:1.5rem;line-height:1.3;margin-bottom:10px}
-.seg{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--line);border-radius:10px;padding:3px}
-.seg button{border:0;background:none;padding:10px;border-radius:7px;font-weight:600;font-size:.9rem;color:var(--muted)}
-.seg button[aria-pressed="true"]{background:var(--sign);color:var(--on-dark)}
-textarea{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;resize:vertical;background:var(--paper)}
-#notes{min-height:80px}
-.sum{padding-block:6px}
-.sum .k{color:var(--muted)}
-.sum-total{font-size:1.25rem;font-weight:700;padding-block:8px 16px}
-.sum-total .price{font-size:1.3rem}
-.wa-btn{width:100%;border:0;border-radius:12px;background:var(--wa);color:var(--on-dark);padding:15px;font-weight:700;font-size:1rem}
-.toast{margin-top:10px;background:var(--butter-tint);border-radius:10px;padding:10px 12px;font-size:.85rem}
-details{margin-top:14px;font-size:.88rem}
-summary{cursor:pointer;color:var(--sign);font-weight:600}
-#msg{margin-top:10px;min-height:150px;background:var(--page);font-size:.86rem}
-.link-btn{border:0;background:none;color:var(--sign);font-weight:600;padding:6px 0}
-.foot-row{display:flex;justify-content:center;margin-top:8px}
-.clear{border:0;background:none;color:var(--muted);font-size:.85rem;text-decoration:underline;padding:6px}
 
 /* Info */
+.sub-h{display:block;font-family:var(--script);font-weight:700;font-size:1.5rem;line-height:1.3;margin-bottom:10px}
 .status-line{display:flex;align-items:center;gap:8px;font-weight:600;padding:14px 16px;background:var(--butter-tint);border-radius:10px;margin-block:16px}
 .status-line .dot{width:9px;height:9px;border-radius:50%;background:var(--muted)}
 .status-line.is-open .dot{background:var(--open)}
@@ -167,12 +125,11 @@ summary{cursor:pointer;color:var(--sign);font-weight:600}
 /* Bottom tab bar */
 .bnav{position:fixed;left:0;right:0;bottom:0;z-index:25;background:var(--paper);border-top:1px solid var(--line);
   padding-bottom:env(safe-area-inset-bottom,0px);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
-.bnav-inner{max-width:640px;margin-inline:auto;display:grid;grid-template-columns:repeat(4,1fr);height:var(--nav-h)}
+.bnav-inner{max-width:640px;margin-inline:auto;display:grid;grid-template-columns:repeat(3,1fr);height:var(--nav-h)}
 .bnav a{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--muted);text-decoration:none;font-size:.74rem;font-weight:600}
 .bnav svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .bnav a[aria-current="page"]{color:var(--sign)}
 .bnav a[aria-current="page"]::before{content:"";position:absolute;top:0;inset-inline:30%;height:3px;border-radius:0 0 3px 3px;background:var(--butter)}
-.nbadge{position:absolute;top:7px;inset-inline-start:calc(50% + 4px);min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--butter);color:var(--ink);font-size:.66rem;font-weight:700;display:grid;place-items:center;font-style:normal}
 
 @media (prefers-reduced-motion:no-preference){
   html{scroll-behavior:smooth}
