@@ -4,9 +4,9 @@
   /* ---------- Text in both languages ---------- */
   var I18N = {
     ar: {
-      demo: "نسخة تجريبية للعرض. الاسم والأسعار والمعلومات للتوضيح فقط.",
+      demo: "نسخة تجريبية للعرض.",
       langBtn: "English",
-      brand: "فرن الحارة",
+      brand: "فطائر لمة",
       tagline: "فطائر مصرية على الصاج",
       openNow: "مفتوح الآن",
       closedNow: "مغلق الآن",
@@ -42,9 +42,9 @@
       footer: "نسخة تجريبية من تصميم أحمد"
     },
     en: {
-      demo: "Demo site. The name, prices and details are examples.",
+      demo: "Demo site.",
       langBtn: "عربي",
-      brand: "Hara Bakehouse",
+      brand: "Lamma Pies",
       tagline: "Egyptian feteer off the sajj",
       openNow: "Open now",
       closedNow: "Closed now",
