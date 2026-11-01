@@ -110,14 +110,14 @@
       { id: "crepes-3", ar: "كريب سوبر كرانش", en: "Super crunch crepe", p: [["",18]], img: "menu/crepes-3.jpg" },
       { id: "crepes-4", ar: "ستربس", en: "Strips crepe", p: [["",17]], img: "menu/crepes-4.jpg" },
       { id: "crepes-5", ar: "كريب بيبروني", en: "Pepperoni crepe", p: [["",17]], img: "menu/crepes-5.jpg" },
-      { id: "crepes-6", ar: "دجاج", en: "Chicken", p: [["",20]], img: "menu/crepes-6.jpg" },
+      { id: "crepes-6", ar: "دجاج", en: "Chicken crepe", p: [["",20]], img: "menu/crepes-6.jpg" },
       { id: "crepes-7", ar: "كريب باربكيو", en: "BBQ crepe", p: [["",17]], img: "menu/crepes-7.jpg" },
       { id: "crepes-8", ar: "كريب رانش", en: "Ranch crepe", p: [["",17]], img: "menu/crepes-8.jpg" },
       { id: "crepes-9", ar: "كريب الاجبان الثلاثة", en: "Three-cheese crepe", p: [["",18]], img: "menu/crepes-9.jpg" },
       { id: "crepes-10", ar: "كريب بانيه", en: "Chicken pané crepe", p: [["",16]], img: "menu/crepes-10.jpg" },
       { id: "crepes-11", ar: "بطاطس", en: "Fries crepe", p: [["",12]], img: "menu/crepes-11.jpg" },
       { id: "crepes-12", ar: "كريب دبي", en: "Dubai crepe", p: [["",18]], img: "menu/crepes-12.jpg" },
-      { id: "crepes-13", ar: "نوتيلا", en: "Nutella", p: [["",17]], img: "menu/crepes-13.jpg" }
+      { id: "crepes-13", ar: "نوتيلا", en: "Nutella crepe", p: [["",17]], img: "menu/crepes-13.jpg" }
     ]},
     { id: "meshaltet", ar: "المشلتت", en: "Meshaltet", items: [
       { id: "meshaltet-1", ar: "بيبروني", en: "Pepperoni", p: [["s",15],["m",22],["l",33]], img: "menu/meshaltet-1.jpg" },
@@ -127,7 +127,7 @@
       { id: "meshaltet-5", ar: "لحم", en: "Meat", p: [["s",15],["m",22],["l",33]], img: "menu/meshaltet-5.jpg" },
       { id: "meshaltet-6", ar: "الأجبان الثلاثة", en: "Three cheese", p: [["s",16],["m",23],["l",34]], img: "menu/meshaltet-6.jpg" },
       { id: "meshaltet-7", ar: "نقانق", en: "Sausage", p: [["s",15],["m",22],["l",33]], img: "menu/meshaltet-7.jpg" },
-      { id: "meshaltet-8", ar: "قشطة وعسل", en: "Qashta & honey", p: [["s",12],["m",20],["l",30]], img: "menu/meshaltet-8.jpg" },
+      { id: "meshaltet-8", ar: "قشطة وعسل", en: "Cream & honey", p: [["s",12],["m",20],["l",30]], img: "menu/meshaltet-8.jpg" },
       { id: "meshaltet-9", ar: "دجاج", en: "Chicken", p: [["s",15],["m",22],["l",33]], img: "menu/meshaltet-9.jpg" }
     ]},
     { id: "platters", ar: "الصحون", en: "Platters", items: [
@@ -168,13 +168,13 @@
     ]},
     { id: "cheese", ar: "الأجبان", en: "Cheese", items: [
       { id: "cheese-1", ar: "جبن حلوم", en: "Halloumi", p: [["shami",6],["saj",6],["round",9],["leb",16]], img: "menu/cheese-1.jpg" },
-      { id: "cheese-2", ar: "جبن سائل بالعسل", en: "Cheese sauce & honey", p: [["shami",7],["saj",7],["round",10],["leb",17]], img: "menu/cheese-2.jpg" },
+      { id: "cheese-2", ar: "جبن سائل بالعسل", en: "Cream cheese & honey", p: [["shami",7],["saj",7],["round",10],["leb",17]], img: "menu/cheese-2.jpg" },
       { id: "cheese-3", ar: "جبن مشكل", en: "Mixed cheese", p: [["shami",7],["saj",7],["round",10],["leb",17]], img: "menu/cheese-3.jpg" },
-      { id: "cheese-4", ar: "جبن حلوم كامل", en: "Full halloumi", p: [["shami",7],["saj",7],["round",10],["leb",17]], img: "menu/cheese-4.jpg" },
+      { id: "cheese-4", ar: "جبن حلوم كامل", en: "Whole halloumi", p: [["shami",7],["saj",7],["round",10],["leb",17]], img: "menu/cheese-4.jpg" },
       { id: "cheese-5", ar: "جبن مع الزعتر", en: "Cheese & zaatar", p: [["shami",6],["saj",6],["round",10],["leb",17]], img: "menu/cheese-5.jpg" },
       { id: "cheese-6", ar: "جبن شيدر", en: "Cheddar", p: [["shami",6],["saj",6],["round",9],["leb",16]], img: "menu/cheese-6.jpg" },
       { id: "cheese-7", ar: "جبن قشقوان", en: "Kashkaval", p: [["shami",6],["saj",6],["round",9],["leb",16]], img: "menu/cheese-7.jpg" },
-      { id: "cheese-8", ar: "جبن سائل", en: "Cheese sauce", p: [["shami",6],["saj",6],["round",9],["leb",16]], img: "menu/cheese-8.jpg" },
+      { id: "cheese-8", ar: "جبن سائل", en: "Cream cheese", p: [["shami",6],["saj",6],["round",9],["leb",16]], img: "menu/cheese-8.jpg" },
       { id: "cheese-9", ar: "جبن عكاوي", en: "Akkawi", p: [["shami",6],["saj",6],["round",9],["leb",16]], img: "menu/cheese-9.jpg" }
     ]},
     { id: "potato", ar: "البطاطا", en: "Potato", items: [
@@ -203,19 +203,19 @@
       { id: "drinks-1", ar: "عصير ربيع", en: "Al Rabie juice", p: [["",2]], img: "menu/drinks-1.jpg" },
       { id: "drinks-2", ar: "ديو", en: "Mountain Dew", p: [["s",3],["fam",12]], img: "menu/drinks-2.jpg" },
       { id: "drinks-3", ar: "سڤن اب", en: "7UP", p: [["s",3],["fam",12]], img: "menu/drinks-3.jpg" },
-      { id: "drinks-4", ar: "حمضيات", en: "Citrus (Mirinda)", p: [["s",3],["fam",12]], img: "menu/drinks-4.jpg" },
+      { id: "drinks-4", ar: "حمضيات", en: "Mirinda Citrus", p: [["s",3],["fam",12]], img: "menu/drinks-4.jpg" },
       { id: "drinks-5", ar: "بيبسي", en: "Pepsi", p: [["s",3],["fam",12]], img: "menu/drinks-5.jpg" }
     ]},
-    { id: "fried", ar: "المقالي", en: "Fried", items: [
+    { id: "fried", ar: "المقالي", en: "Fried items", items: [
       { id: "fried-1", ar: "كبة", en: "Kibbeh", p: [["s",11],["m",21],["l",32]], img: "menu/fried-1.jpg" },
       { id: "fried-2", ar: "كباجي", en: "Kabaji", p: [["s",10],["m",20],["l",30]], img: "menu/fried-2.jpg" },
       { id: "fried-3", ar: "صحن بطاطس", en: "Fries", p: [["s",5],["m",10],["l",15]], img: "menu/fried-3.jpg" },
-      { id: "fried-4", ar: "سمبوسة", en: "Sambousa", p: [["s",10],["m",20],["l",30]], img: "menu/fried-4.jpg" },
-      { id: "fried-5", ar: "ورق عنب", en: "Stuffed vine leaves", p: [["s",10],["m",20],["l",30]], img: "menu/fried-5.jpg" }
+      { id: "fried-4", ar: "سمبوسة", en: "Samosa", p: [["s",10],["m",20],["l",30]], img: "menu/fried-4.jpg" },
+      { id: "fried-5", ar: "ورق عنب", en: "Stuffed grape leaves", p: [["s",10],["m",20],["l",30]], img: "menu/fried-5.jpg" }
     ]},
     { id: "sweet", ar: "فطائر حلوة", en: "Sweet pies", items: [
       { id: "sweet-1", ar: "بستاشيو", en: "Pistachio", p: [["saj",7],["shami",7]], img: "menu/sweet-1.jpg" },
-      { id: "sweet-2", ar: "قشطة وعسل", en: "Qashta & honey", p: [["shami",7],["saj",7]], img: "menu/sweet-2.jpg" },
+      { id: "sweet-2", ar: "قشطة وعسل", en: "Cream & honey", p: [["shami",7],["saj",7]], img: "menu/sweet-2.jpg" },
       { id: "sweet-3", ar: "نوتيلا", en: "Nutella", p: [["shami",7],["saj",7]], img: "menu/sweet-3.jpg" }
     ]},
     { id: "zaatar", ar: "الزعتر", en: "Zaatar", items: [
@@ -227,7 +227,7 @@
     { id: "labneh", ar: "الالبان", en: "Labneh", items: [
       { id: "labneh-1", ar: "لبنة بالعسل", en: "Labneh & honey", p: [["shami",6],["saj",6],["round",10],["leb",17]], img: "menu/labneh-1.jpg" },
       { id: "labneh-2", ar: "عش البلبل", en: "Bird's nest", p: [["shami",7],["saj",7],["round",10],["leb",16]], img: "menu/labneh-2.jpg" },
-      { id: "labneh-3", ar: "لبنه كامل", en: "Full labneh", p: [["shami",7],["saj",7],["round",10],["leb",16]], img: "menu/labneh-3.jpg" },
+      { id: "labneh-3", ar: "لبنه كامل", en: "Whole labneh", p: [["shami",7],["saj",7],["round",10],["leb",16]], img: "menu/labneh-3.jpg" },
       { id: "labneh-4", ar: "لبنه بالجبن", en: "Labneh & cheese", p: [["shami",7],["saj",7],["round",10],["leb",16]], img: "menu/labneh-4.jpg" },
       { id: "labneh-5", ar: "لبنة زعتر", en: "Labneh & zaatar", p: [["shami",6],["saj",6],["round",10],["leb",16]], img: "menu/labneh-5.jpg" }
     ]}
