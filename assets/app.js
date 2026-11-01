@@ -7,15 +7,15 @@
       demo: "نسخة تجريبية للعرض.",
       langBtn: "English",
       brand: "فطائر لمة",
-      tagline: "فطائر مصرية على الصاج",
+      tagline: "",
       openNow: "مفتوح الآن",
       closedNow: "مغلق الآن",
       closes: "يغلق",
       opens: "يفتح",
       seeMenu: "شوف المنيو",
       hoursAddress: "الأوقات والعنوان",
-      featureNote: "على الطريقة المصرية، ينخبز وقت ما تطلب.",
-      seeOnMenu: "شوف الفطائر الحلوة",
+      featureNote: "الكريب اللي على اسم المحل.",
+      seeOnMenu: "شوف كل الكريب",
       orderHS: "اطلب عبر هنقرستيشن",
       orderHSNote: "التوصيل عن طريق تطبيق هنقرستيشن.",
       menuTitle: "المنيو",
@@ -27,33 +27,38 @@
       navInfo: "المعلومات",
       searchPh: "ابحث في المنيو",
       noResults: "ما فيه نتائج لـ",
-      cats: { savory: "فطائر مالحة", sweet: "فطائر حلوة", crepes: "كريب", drinks: "مشروبات" },
-      egyptian: "مصري",
+      sizes: { shami: "شاميات", saj: "صاج", round: "مدور", leb: "لبناني", s: "صغير", m: "وسط", l: "كبير", fam: "عائلي", crust: "أطراف جبنة" },
+      open247: "مفتوح 24 ساعة",
+      allDay: "24 ساعة",
       hoursTitle: "أوقات العمل",
       today: "اليوم",
       days: ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"],
       contactTitle: "التواصل",
       addressL: "العنوان",
-      addressV: "يُضاف عنوان المحل هنا",
+      addressV: "حي الصناعية، النعيرية",
+      mapL: "الخريطة",
+      mapV: "افتح في خرائط قوقل",
       phoneL: "الهاتف",
-      phoneV: "يُضاف رقم المحل هنا",
+      whatsappL: "واتساب",
+      whatsappV: "راسلنا",
+      instagramL: "إنستقرام",
       aboutTitle: "عن المطعم",
-      aboutText: "فطائر ومشلتت وكريب تنخبز طازجة على الصاج طول اليوم، بحشوات سخية. (نص تجريبي، يُستبدل بوصف المطعم)",
+      aboutText: "فطائر لمة في النعيرية: فطائر على الشاميات والصاج والمدور واللبناني، ومشلتت وكريب وبيتزا ومقالي. مفتوحين 24 ساعة.",
       footer: "نسخة تجريبية من تصميم أحمد"
     },
     en: {
       demo: "Demo site.",
       langBtn: "عربي",
       brand: "Lamma Pies",
-      tagline: "Egyptian feteer off the sajj",
+      tagline: "With you at every gathering",
       openNow: "Open now",
       closedNow: "Closed now",
       closes: "closes",
       opens: "opens",
       seeMenu: "See the menu",
       hoursAddress: "Hours & address",
-      featureNote: "Egyptian style, baked when you order.",
-      seeOnMenu: "See the sweet feteer",
+      featureNote: "The crepe named after the shop.",
+      seeOnMenu: "See all crepes",
       orderHS: "Order on HungerStation",
       orderHSNote: "Delivery is handled by the HungerStation app.",
       menuTitle: "The menu",
@@ -65,57 +70,185 @@
       navInfo: "Info",
       searchPh: "Search the menu",
       noResults: "No results for",
-      cats: { savory: "Savory feteer", sweet: "Sweet feteer", crepes: "Crepes", drinks: "Drinks" },
-      egyptian: "Egyptian",
+      sizes: { shami: "Shami", saj: "Saj", round: "Round", leb: "Lebanese", s: "Small", m: "Medium", l: "Large", fam: "Family", crust: "Cheese crust" },
+      open247: "Open 24 hours",
+      allDay: "24 hours",
       hoursTitle: "Opening hours",
       today: "Today",
       days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
       contactTitle: "Contact",
       addressL: "Address",
-      addressV: "Shop address goes here",
+      addressV: "Industrial district, Nairyah",
+      mapL: "Map",
+      mapV: "Open in Google Maps",
       phoneL: "Phone",
-      phoneV: "Shop number goes here",
+      whatsappL: "WhatsApp",
+      whatsappV: "Message us",
+      instagramL: "Instagram",
       aboutTitle: "About us",
-      aboutText: "Feteer, meshaltet and crepes baked fresh on the sajj all day, with generous fillings. (Sample text, to be replaced with the shop's own.)",
+      aboutText: "Lamma Pies in Nairyah: fatayer on Shami, saj, round and Lebanese bread, plus meshaltet, crepes, pizza and fried sides. Open 24 hours.",
       footer: "Demo designed by Ahmad"
     }
   };
 
-  /* ---------- Menu (sample items and prices) ---------- */
+  /* ---------- Menu, copied from the shop's own menu page (fataer-lammah.menusplus-qr.com) ----------
+     p = prices: [size, SAR]. Size "" means one price. Size keys are named in I18N.sizes.
+     English names are our own translations. Photos are in assets/menu/. */
   var MENU = [
-    { id: "savory", items: [
-      { id: "s1", price: 12, ar: ["جبنة", "عكاوي وموزاريلا"], en: ["Cheese", "Akkawi and mozzarella"] },
-      { id: "s2", price: 8,  ar: ["زعتر وزيت", "زعتر بلدي وزيت زيتون"], en: ["Zaatar & oil", "Thyme blend and olive oil"] },
-      { id: "s3", price: 18, ar: ["لحم مفروم", "لحم متبّل مع بصل وطماطم"], en: ["Minced meat", "Spiced beef with onion and tomato"] },
-      { id: "s4", price: 16, ar: ["سجق", "سجق حار مع جبنة"], en: ["Sujuk", "Spicy sujuk with cheese"] },
-      { id: "s5", price: 14, ar: ["بيض وجبنة", "بيض مخفوق وجبنة بيضاء"], en: ["Egg & cheese", "Scrambled egg and white cheese"] },
-      { id: "s6", price: 20, ar: ["مشكّل", "لحم وسجق وجبنة وخضار"], en: ["Mixed", "Meat, sujuk, cheese and vegetables"] }
+    { id: "chicken", ar: "الدجاج", en: "Chicken", items: [
+      { id: "chicken-1", ar: "بيبروني", en: "Pepperoni", p: [["shami",7],["saj",7],["round",10],["leb",17]], img: "menu/chicken-1.jpg" },
+      { id: "chicken-2", ar: "مرتديلا جبن", en: "Mortadella & cheese", p: [["shami",6],["saj",6],["round",10],["leb",16]], img: "menu/chicken-2.jpg" },
+      { id: "chicken-3", ar: "نقانق بالجبن", en: "Sausage & cheese", p: [["shami",6],["saj",6],["round",10],["leb",16]], img: "menu/chicken-3.jpg" },
+      { id: "chicken-4", ar: "دجاج مكسيكي", en: "Mexican chicken", p: [["shami",10],["saj",10],["round",14],["leb",20]], img: "menu/chicken-4.jpg" },
+      { id: "chicken-5", ar: "دجاج فاهيتا", en: "Chicken fajita", p: [["shami",10],["saj",10],["round",14],["leb",20]], img: "menu/chicken-5.jpg" },
+      { id: "chicken-6", ar: "دجاج رانش", en: "Chicken ranch", p: [["shami",10],["saj",10],["round",14],["leb",20]], img: "menu/chicken-6.jpg" },
+      { id: "chicken-7", ar: "دجاج باربيكيو", en: "BBQ chicken", p: [["shami",10],["saj",10],["round",14],["leb",20]], img: "menu/chicken-7.jpg" }
     ]},
-    { id: "sweet", items: [
-      { id: "w1", price: 22, tag: true, ar: ["مشلتت", "طبقات بالسمن، مع عسل وقشطة"], en: ["Meshaltet", "Flaky ghee layers with honey and cream"] },
-      { id: "w2", price: 15, ar: ["عسل وقشطة", "قشطة طازجة وعسل"], en: ["Honey & qashta", "Fresh clotted cream and honey"] },
-      { id: "w3", price: 14, ar: ["شوكولاتة", "شوكولاتة ذائبة ومكسرات"], en: ["Chocolate", "Melted chocolate and nuts"] },
-      { id: "w4", price: 10, ar: ["سكر وسمن", "الطعم الكلاسيكي"], en: ["Sugar & ghee", "The classic"] }
+    { id: "crepes", ar: "الكريب", en: "Crepes", items: [
+      { id: "crepes-1", ar: "كريب لمة", en: "Lamma crepe", p: [["",22]], img: "menu/crepes-1.jpg" },
+      { id: "crepes-2", ar: "كريب ميكس دجاج", en: "Mixed chicken crepe", p: [["",20]], img: "menu/crepes-2.jpg" },
+      { id: "crepes-3", ar: "كريب سوبر كرانش", en: "Super crunch crepe", p: [["",18]], img: "menu/crepes-3.jpg" },
+      { id: "crepes-4", ar: "ستربس", en: "Strips crepe", p: [["",17]], img: "menu/crepes-4.jpg" },
+      { id: "crepes-5", ar: "كريب بيبروني", en: "Pepperoni crepe", p: [["",17]], img: "menu/crepes-5.jpg" },
+      { id: "crepes-6", ar: "دجاج", en: "Chicken", p: [["",20]], img: "menu/crepes-6.jpg" },
+      { id: "crepes-7", ar: "كريب باربكيو", en: "BBQ crepe", p: [["",17]], img: "menu/crepes-7.jpg" },
+      { id: "crepes-8", ar: "كريب رانش", en: "Ranch crepe", p: [["",17]], img: "menu/crepes-8.jpg" },
+      { id: "crepes-9", ar: "كريب الاجبان الثلاثة", en: "Three-cheese crepe", p: [["",18]], img: "menu/crepes-9.jpg" },
+      { id: "crepes-10", ar: "كريب بانيه", en: "Chicken pané crepe", p: [["",16]], img: "menu/crepes-10.jpg" },
+      { id: "crepes-11", ar: "بطاطس", en: "Fries crepe", p: [["",12]], img: "menu/crepes-11.jpg" },
+      { id: "crepes-12", ar: "كريب دبي", en: "Dubai crepe", p: [["",18]], img: "menu/crepes-12.jpg" },
+      { id: "crepes-13", ar: "نوتيلا", en: "Nutella", p: [["",17]], img: "menu/crepes-13.jpg" }
     ]},
-    { id: "crepes", items: [
-      { id: "c1", price: 18, ar: ["كريب دجاج", "دجاج وفطر وصوص أبيض"], en: ["Chicken crepe", "Chicken, mushroom and white sauce"] },
-      { id: "c2", price: 14, ar: ["كريب بطاطس وجبنة", "بطاطس مقرمشة وشيدر"], en: ["Potato & cheese crepe", "Crispy potato and cheddar"] },
-      { id: "c3", price: 16, ar: ["كريب شوكولاتة وموز", "موز طازج وشوكولاتة"], en: ["Chocolate & banana crepe", "Fresh banana and chocolate"] },
-      { id: "c4", price: 15, ar: ["كريب كراميل", "كراميل مملح وفتات بسكويت"], en: ["Caramel crepe", "Salted caramel and biscuit crumbs"] }
+    { id: "meshaltet", ar: "المشلتت", en: "Meshaltet", items: [
+      { id: "meshaltet-1", ar: "بيبروني", en: "Pepperoni", p: [["s",15],["m",22],["l",33]], img: "menu/meshaltet-1.jpg" },
+      { id: "meshaltet-2", ar: "سجق", en: "Sujuk", p: [["s",15],["m",22],["l",33]], img: "menu/meshaltet-2.jpg" },
+      { id: "meshaltet-3", ar: "نوتيلا", en: "Nutella", p: [["s",12],["m",20],["l",30]], img: "menu/meshaltet-3.jpg" },
+      { id: "meshaltet-4", ar: "كستر وحليب", en: "Custard & milk", p: [["s",12],["m",20],["l",30]], img: "menu/meshaltet-4.jpg" },
+      { id: "meshaltet-5", ar: "لحم", en: "Meat", p: [["s",15],["m",22],["l",33]], img: "menu/meshaltet-5.jpg" },
+      { id: "meshaltet-6", ar: "الأجبان الثلاثة", en: "Three cheese", p: [["s",16],["m",23],["l",34]], img: "menu/meshaltet-6.jpg" },
+      { id: "meshaltet-7", ar: "نقانق", en: "Sausage", p: [["s",15],["m",22],["l",33]], img: "menu/meshaltet-7.jpg" },
+      { id: "meshaltet-8", ar: "قشطة وعسل", en: "Qashta & honey", p: [["s",12],["m",20],["l",30]], img: "menu/meshaltet-8.jpg" },
+      { id: "meshaltet-9", ar: "دجاج", en: "Chicken", p: [["s",15],["m",22],["l",33]], img: "menu/meshaltet-9.jpg" }
     ]},
-    { id: "drinks", items: [
-      { id: "d1", price: 5,  ar: ["شاي كرك", "حليب وهيل"], en: ["Karak tea", "Milk and cardamom"] },
-      { id: "d2", price: 6,  ar: ["قهوة عربية", "دلة صغيرة"], en: ["Arabic coffee", "Small dallah"] },
-      { id: "d3", price: 10, ar: ["ليمون ونعناع", "طازج ومثلج"], en: ["Lemon mint", "Fresh and iced"] },
-      { id: "d4", price: 9,  ar: ["سحلب", "سحلب سخن بالقرفة"], en: ["Sahlab", "Warm sahlab with cinnamon"] }
+    { id: "platters", ar: "الصحون", en: "Platters", items: [
+      { id: "platters-1", ar: "صحن ميني تقديم", en: "Mini serving platter", p: [["s",30],["m",44],["l",71],["fam",93]], img: "menu/platters-1.jpg" },
+      { id: "platters-2", ar: "صحن صاج مشكل", en: "Mixed saj platter", p: [["s",30],["m",44],["l",71],["fam",93]], img: "menu/platters-2.jpg" },
+      { id: "platters-3", ar: "صحن ميني شاميات", en: "Mini Shami platter", p: [["s",30],["m",44],["l",71],["fam",93]], img: "menu/platters-3.jpg" },
+      { id: "platters-4", ar: "صحن شاميات", en: "Shami platter", p: [["s",30],["m",44],["l",71],["fam",93]], img: "menu/platters-4.jpg" }
+    ]},
+    { id: "sfiha", ar: "صفايح اللحم", en: "Meat sfiha", items: [
+      { id: "sfiha-1", ar: "كيلو", en: "1 kilo", p: [["",97]], img: "menu/sfiha-1.jpg" },
+      { id: "sfiha-2", ar: "نص كيلو", en: "Half kilo", p: [["",48]], img: "menu/sfiha-2.jpg" },
+      { id: "sfiha-3", ar: "ربع كيلو", en: "Quarter kilo", p: [["",25]], img: "menu/sfiha-3.jpg" },
+      { id: "sfiha-4", ar: "الحبة", en: "Per piece", p: [["",4]], img: "menu/sfiha-4.jpg" }
+    ]},
+    { id: "meat", ar: "اللحم", en: "Meat", items: [
+      { id: "meat-1", ar: "لحم سادة", en: "Plain meat", p: [["round",8],["leb",16]], img: "menu/meat-1.jpg" },
+      { id: "meat-2", ar: "لحم جبن", en: "Meat & cheese", p: [["round",9],["leb",17]], img: "menu/meat-2.jpg" }
+    ]},
+    { id: "falafel", ar: "الفلافل", en: "Falafel", items: [
+      { id: "falafel-1", ar: "فلافل جبن", en: "Falafel & cheese", p: [["saj",5],["shami",5]], img: "menu/falafel-1.jpg" },
+      { id: "falafel-2", ar: "فلافل لبنه", en: "Falafel & labneh", p: [["saj",5],["shami",5]], img: "menu/falafel-2.jpg" },
+      { id: "falafel-3", ar: "فلافل مشكل", en: "Mixed falafel", p: [["saj",5],["shami",5]], img: "menu/falafel-3.jpg" }
+    ]},
+    { id: "eggs", ar: "البيض", en: "Eggs", items: [
+      { id: "eggs-1", ar: "بيض مشكل", en: "Mixed egg", p: [["shami",6],["round",6],["leb",11]], img: "menu/eggs-1.jpg" },
+      { id: "eggs-2", ar: "بيض جبن", en: "Egg & cheese", p: [["shami",6],["round",6],["leb",11]], img: "menu/eggs-2.jpg" },
+      { id: "eggs-3", ar: "بيض سادة", en: "Plain egg", p: [["shami",5],["round",5],["leb",10]], img: "menu/eggs-3.jpg" }
+    ]},
+    { id: "spinach", ar: "السبانخ", en: "Spinach", items: [
+      { id: "spinach-1", ar: "سبانخ لبنة", en: "Spinach & labneh", p: [["shami",6],["saj",6],["round",10],["leb",16]], img: "menu/spinach-1.jpg" },
+      { id: "spinach-2", ar: "سبانخ بالجبنة", en: "Spinach & cheese", p: [["shami",6],["saj",6],["round",10],["leb",16]], img: "menu/spinach-2.jpg" },
+      { id: "spinach-3", ar: "سبانخ سادة", en: "Plain spinach", p: [["shami",5],["saj",5],["round",9],["leb",15]], img: "menu/spinach-3.jpg" }
+    ]},
+    { id: "muhammara", ar: "المحمرة", en: "Muhammara", items: [
+      { id: "muhammara-1", ar: "محمرة بالجبن", en: "Muhammara & cheese", p: [["shami",6],["saj",6],["round",10],["leb",16]], img: "menu/muhammara-1.jpg" },
+      { id: "muhammara-2", ar: "محمرة باللبنه", en: "Muhammara & labneh", p: [["shami",6],["saj",6],["round",10],["leb",16]], img: "menu/muhammara-2.jpg" },
+      { id: "muhammara-3", ar: "محمرة سادة", en: "Plain muhammara", p: [["shami",6],["saj",6],["round",10],["leb",16]], img: "menu/muhammara-3.jpg" }
+    ]},
+    { id: "cheese", ar: "الأجبان", en: "Cheese", items: [
+      { id: "cheese-1", ar: "جبن حلوم", en: "Halloumi", p: [["shami",6],["saj",6],["round",9],["leb",16]], img: "menu/cheese-1.jpg" },
+      { id: "cheese-2", ar: "جبن سائل بالعسل", en: "Cheese sauce & honey", p: [["shami",7],["saj",7],["round",10],["leb",17]], img: "menu/cheese-2.jpg" },
+      { id: "cheese-3", ar: "جبن مشكل", en: "Mixed cheese", p: [["shami",7],["saj",7],["round",10],["leb",17]], img: "menu/cheese-3.jpg" },
+      { id: "cheese-4", ar: "جبن حلوم كامل", en: "Full halloumi", p: [["shami",7],["saj",7],["round",10],["leb",17]], img: "menu/cheese-4.jpg" },
+      { id: "cheese-5", ar: "جبن مع الزعتر", en: "Cheese & zaatar", p: [["shami",6],["saj",6],["round",10],["leb",17]], img: "menu/cheese-5.jpg" },
+      { id: "cheese-6", ar: "جبن شيدر", en: "Cheddar", p: [["shami",6],["saj",6],["round",9],["leb",16]], img: "menu/cheese-6.jpg" },
+      { id: "cheese-7", ar: "جبن قشقوان", en: "Kashkaval", p: [["shami",6],["saj",6],["round",9],["leb",16]], img: "menu/cheese-7.jpg" },
+      { id: "cheese-8", ar: "جبن سائل", en: "Cheese sauce", p: [["shami",6],["saj",6],["round",9],["leb",16]], img: "menu/cheese-8.jpg" },
+      { id: "cheese-9", ar: "جبن عكاوي", en: "Akkawi", p: [["shami",6],["saj",6],["round",9],["leb",16]], img: "menu/cheese-9.jpg" }
+    ]},
+    { id: "potato", ar: "البطاطا", en: "Potato", items: [
+      { id: "potato-1", ar: "بطاطا سادة", en: "Plain potato", p: [["shami",5],["saj",5],["round",9],["leb",15]], img: "menu/potato-1.jpg" },
+      { id: "potato-2", ar: "بطاطا خضار", en: "Potato & vegetables", p: [["shami",6],["saj",6],["round",10],["leb",16]], img: "menu/potato-2.jpg" },
+      { id: "potato-3", ar: "بطاطا جبن", en: "Potato & cheese", p: [["shami",5],["saj",5],["round",9],["leb",15]], img: "menu/potato-3.jpg" }
+    ]},
+    { id: "fatteh", ar: "فتة", en: "Fatteh", items: [
+      { id: "fatteh-1", ar: "فتة الباذنجان", en: "Eggplant fatteh", p: [["shami",6],["saj",6],["round",10],["leb",15]], img: "menu/fatteh-1.jpg" }
+    ]},
+    { id: "pizza", ar: "البيتزا", en: "Pizza", items: [
+      { id: "pizza-1", ar: "بيتزا لمه", en: "Lamma pizza", p: [["s",16],["m",21],["l",28],["crust",32]], img: "menu/pizza-1.jpg" },
+      { id: "pizza-2", ar: "بيتزا ستريبس دجاج", en: "Chicken strips pizza", p: [["s",15],["m",21],["l",28],["crust",32]], img: "menu/pizza-2.jpg" },
+      { id: "pizza-3", ar: "بيتزا فلافل", en: "Falafel pizza", p: [["s",13],["m",20],["l",27],["crust",30]], img: "menu/pizza-3.jpg" },
+      { id: "pizza-4", ar: "بيتزا سوبر سوبريم", en: "Super supreme pizza", p: [["s",15],["m",21],["l",28],["crust",32]], img: "menu/pizza-4.jpg" },
+      { id: "pizza-5", ar: "بيتزا نقانق", en: "Sausage pizza", p: [["s",14],["m",20],["l",27],["crust",30]], img: "menu/pizza-5.jpg" },
+      { id: "pizza-6", ar: "بيتزا رانش", en: "Ranch pizza", p: [["s",15],["m",21],["l",28],["crust",32]], img: "menu/pizza-6.jpg" },
+      { id: "pizza-7", ar: "بيتزا باربيكيو", en: "BBQ pizza", p: [["s",15],["m",21],["l",28],["crust",32]], img: "menu/pizza-7.jpg" },
+      { id: "pizza-8", ar: "بيتزا فاهيتا دجاج", en: "Chicken fajita pizza", p: [["s",14],["m",20],["l",27],["crust",30]], img: "menu/pizza-8.jpg" },
+      { id: "pizza-9", ar: "بيتزا لحم", en: "Meat pizza", p: [["s",14],["m",20],["l",27],["crust",30]], img: "menu/pizza-9.jpg" },
+      { id: "pizza-10", ar: "بيتزا خضار", en: "Vegetable pizza", p: [["s",12],["m",20],["l",27],["crust",30]], img: "menu/pizza-10.jpg" },
+      { id: "pizza-11", ar: "بيتزا بيبروني", en: "Pepperoni pizza", p: [["s",14],["m",20],["l",27],["crust",30]], img: "menu/pizza-11.jpg" },
+      { id: "pizza-12", ar: "بيتزا مرجريتا", en: "Margherita pizza", p: [["s",12],["m",20],["l",27],["crust",30]], img: "menu/pizza-12.jpg" }
+    ]},
+    { id: "drinks", ar: "المشروبات", en: "Drinks", items: [
+      { id: "drinks-1", ar: "عصير ربيع", en: "Rabea juice", p: [["",2]], img: "menu/drinks-1.jpg" },
+      { id: "drinks-2", ar: "ديو", en: "Mountain Dew", p: [["s",3],["fam",12]], img: "menu/drinks-2.jpg" },
+      { id: "drinks-3", ar: "سڤن اب", en: "7UP", p: [["s",3],["fam",12]], img: "menu/drinks-3.jpg" },
+      { id: "drinks-4", ar: "حمضيات", en: "Citrus (Mirinda)", p: [["s",3],["fam",12]], img: "menu/drinks-4.jpg" },
+      { id: "drinks-5", ar: "بيبسي", en: "Pepsi", p: [["s",3],["fam",12]], img: "menu/drinks-5.jpg" }
+    ]},
+    { id: "fried", ar: "المقالي", en: "Fried", items: [
+      { id: "fried-1", ar: "كبة", en: "Kibbeh", p: [["s",11],["m",21],["l",32]], img: "menu/fried-1.jpg" },
+      { id: "fried-2", ar: "كباجي", en: "Kebbaji", p: [["s",10],["m",20],["l",30]], img: "menu/fried-2.jpg" },
+      { id: "fried-3", ar: "صحن بطاطس", en: "Fries", p: [["s",5],["m",10],["l",15]], img: "menu/fried-3.jpg" },
+      { id: "fried-4", ar: "سمبوسة", en: "Sambousa", p: [["s",10],["m",20],["l",30]], img: "menu/fried-4.jpg" },
+      { id: "fried-5", ar: "ورق عنب", en: "Stuffed vine leaves", p: [["s",10],["m",20],["l",30]], img: "menu/fried-5.jpg" }
+    ]},
+    { id: "sweet", ar: "فطائر حلوة", en: "Sweet pies", items: [
+      { id: "sweet-1", ar: "بستاشيو", en: "Pistachio", p: [["saj",7],["shami",7]], img: "menu/sweet-1.jpg" },
+      { id: "sweet-2", ar: "قشطة وعسل", en: "Qashta & honey", p: [["shami",7],["saj",7]], img: "menu/sweet-2.jpg" },
+      { id: "sweet-3", ar: "نوتيلا", en: "Nutella", p: [["shami",7],["saj",7]], img: "menu/sweet-3.jpg" }
+    ]},
+    { id: "zaatar", ar: "الزعتر", en: "Zaatar", items: [
+      { id: "zaatar-1", ar: "زعتر محشي الأطراف", en: "Stuffed-crust zaatar", p: [["round",8],["leb",16]], img: null },
+      { id: "zaatar-2", ar: "زعتر مع خضار", en: "Zaatar & vegetables", p: [["shami",5],["saj",5],["round",5],["leb",14]], img: "menu/zaatar-2.jpg" },
+      { id: "zaatar-3", ar: "زعتر مع رمان", en: "Zaatar & pomegranate", p: [["shami",5],["saj",5],["round",6],["leb",15]], img: "menu/zaatar-3.jpg" },
+      { id: "zaatar-4", ar: "زعتر سادة", en: "Plain zaatar", p: [["shami",4],["saj",4],["round",4],["leb",13]], img: "menu/zaatar-4.jpg" }
+    ]},
+    { id: "labneh", ar: "الالبان", en: "Labneh", items: [
+      { id: "labneh-1", ar: "لبنة بالعسل", en: "Labneh & honey", p: [["shami",6],["saj",6],["round",10],["leb",17]], img: "menu/labneh-1.jpg" },
+      { id: "labneh-2", ar: "عش البلبل", en: "Bird's nest", p: [["shami",7],["saj",7],["round",10],["leb",16]], img: "menu/labneh-2.jpg" },
+      { id: "labneh-3", ar: "لبنه كامل", en: "Full labneh", p: [["shami",7],["saj",7],["round",10],["leb",16]], img: "menu/labneh-3.jpg" },
+      { id: "labneh-4", ar: "لبنه بالجبن", en: "Labneh & cheese", p: [["shami",7],["saj",7],["round",10],["leb",16]], img: "menu/labneh-4.jpg" },
+      { id: "labneh-5", ar: "لبنة زعتر", en: "Labneh & zaatar", p: [["shami",6],["saj",6],["round",10],["leb",16]], img: "menu/labneh-5.jpg" }
     ]}
   ];
 
-  /* Opening hours by weekday (0 = Sunday). Hours past 24 run into the next morning: 26 = 2am. */
+  /* Opening hours by weekday (0 = Sunday). Hours past 24 run into the next morning: 26 = 2am.
+     { o: 0, c: 24 } means open all day. The shop is open 24/7 (from its Google Maps listing). */
   var HOURS = [
-    { o: 7, c: 26 }, { o: 7, c: 26 }, { o: 7, c: 26 }, { o: 7, c: 26 },
-    { o: 7, c: 26 }, { o: 13, c: 26 }, { o: 7, c: 26 }
+    { o: 0, c: 24 }, { o: 0, c: 24 }, { o: 0, c: 24 }, { o: 0, c: 24 },
+    { o: 0, c: 24 }, { o: 0, c: 24 }, { o: 0, c: 24 }
   ];
+
+  /* Contact links */
+  var CONTACT = {
+    phone: "0530011762",
+    phoneShown: "053 001 1762",
+    whatsapp: "https://wa.me/966530011762",
+    maps: "https://maps.app.goo.gl/b4xVdBizNN6Bj2VD6",
+    instagram: "https://www.instagram.com/lammapie/",
+    instagramShown: "@lammapie"
+  };
 
   /* The shop's HungerStation page, one link per language (opens in a new tab). */
   var HUNGERSTATION = {
@@ -125,6 +258,7 @@
 
   var ALL = {};
   MENU.forEach(function(c){ c.items.forEach(function(i){ ALL[i.id] = i; }); });
+  var FEATURED = "crepes-1";
 
   /* ---------- Saved language (this browser only) ---------- */
   var page = document.body.getAttribute("data-page") || "home";
@@ -136,8 +270,11 @@
   function $(id){ return document.getElementById(id); }
   function T(k){ return I18N[lang][k]; }
   function money(n){ return lang === "ar" ? n + " ر.س" : "SAR " + n; }
-  function nm(i){ return i[lang][0]; }
-  function ds(i){ return i[lang][1]; }
+  function nm(i){ return i[lang]; }
+  function low(i){ return Math.min.apply(null, i.p.map(function(x){ return x[1]; })); }
+  function oneprice(i){ return i.p.every(function(x){ return x[1] === i.p[0][1]; }); }
+  function priceText(i){ return oneprice(i) ? money(i.p[0][1]) : T("itemsFrom") + " " + money(low(i)); }
+  function ext(href, text){ return '<a href="' + href + '" target="_blank" rel="noopener">' + text + '</a>'; }
   function itemsCount(n){ return lang === "ar" ? n + " أصناف" : n + " items"; }
   function reduced(){ return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches; }
   function leader(left, right){
@@ -148,8 +285,10 @@
     var h12 = h % 12 || 12;
     return lang === "ar" ? h12 + (h < 12 ? " ص" : " م") : h12 + (h < 12 ? "am" : "pm");
   }
-  function hoursRange(h){ return fmtHour(h.o) + " – " + fmtHour(h.c); }
+  function allDay(h){ return h.o === 0 && h.c >= 24; }
+  function hoursRange(h){ return allDay(h) ? T("allDay") : fmtHour(h.o) + " – " + fmtHour(h.c); }
   function openState(){
+    if (HOURS.every(allDay)) return { open: true, always: true };
     var now = new Date(), d = now.getDay(), m = now.getHours() + now.getMinutes() / 60;
     var t = HOURS[d], y = HOURS[(d + 6) % 7];
     if (m >= t.o && m < t.c) return { open: true, at: t.c };
@@ -165,7 +304,7 @@
     root.dir = lang === "ar" ? "rtl" : "ltr";
     document.querySelectorAll("[data-t]").forEach(function(el){
       var v = T(el.getAttribute("data-t"));
-      if (typeof v === "string") el.textContent = v;
+      if (typeof v === "string") { el.textContent = v; el.hidden = !v; }
     });
     document.querySelectorAll("[data-ph]").forEach(function(el){
       var v = T(el.getAttribute("data-ph"));
@@ -178,7 +317,7 @@
       else a.removeAttribute("aria-current");
     });
     var s = openState(), sep = lang === "ar" ? "، " : ", ";
-    var line = (s.open ? T("openNow") : T("closedNow")) + sep + (s.open ? T("closes") : T("opens")) + " " + fmtHour(s.at);
+    var line = s.always ? T("open247") : (s.open ? T("openNow") : T("closedNow")) + sep + (s.open ? T("closes") : T("opens")) + " " + fmtHour(s.at);
     document.querySelectorAll("[data-statusline]").forEach(function(el){
       el.classList.toggle("is-open", s.open);
       var t = el.querySelector("[data-status-text]");
@@ -190,19 +329,20 @@
   /* ---------- Home ---------- */
   var Home = {
     render: function(){
-      var f = ALL.w1, cats = T("cats");
+      var f = ALL[FEATURED];
       document.querySelector("[data-feat-name]").textContent = nm(f);
-      document.querySelector("[data-feat-price]").textContent = money(f.price);
-      document.querySelector("[data-feat-desc]").textContent = ds(f) + ".";
+      document.querySelector("[data-feat-price]").textContent = priceText(f);
+      var fi = document.querySelector("[data-feat-img]");
+      if (fi && f.img) { fi.src = "assets/" + f.img; fi.hidden = false; }
       $("catRows").innerHTML = MENU.map(function(c){
-        var min = Math.min.apply(null, c.items.map(function(i){ return i.price; }));
+        var min = Math.min.apply(null, c.items.map(low));
         return '<a class="cat-row" href="menu.html#' + c.id + '">' +
-          leader('<strong>' + cats[c.id] + '</strong>', '<span class="meta">' + itemsCount(c.items.length) + (lang === "ar" ? "، " : ", ") + T("itemsFrom") + ' ' + money(min) + '</span>') +
+          leader('<strong>' + c[lang] + '</strong>', '<span class="meta">' + itemsCount(c.items.length) + (lang === "ar" ? "، " : ", ") + T("itemsFrom") + ' ' + money(min) + '</span>') +
         '</a>';
       }).join("");
       $("visitRows").innerHTML =
         '<div class="visit-row">' + leader('<span class="k">' + T("todayL") + '</span>', '<span class="v">' + hoursRange(HOURS[new Date().getDay()]) + '</span>') + '</div>' +
-        '<div class="visit-row">' + leader('<span class="k">' + T("addressL") + '</span>', '<span class="v">' + T("addressV") + '</span>') + '</div>';
+        '<div class="visit-row">' + leader('<span class="k">' + T("addressL") + '</span>', '<span class="v">' + ext(CONTACT.maps, T("addressV")) + '</span>') + '</div>';
     }
   };
 
@@ -226,17 +366,20 @@
       Menu.timer = setTimeout(function(){ Menu.lock = false; }, 900);
     },
     render: function(){
-      var cats = T("cats");
+      var sizes = T("sizes");
       $("tabsInner").innerHTML = MENU.map(function(c){
-        return '<button type="button" class="tab" data-tab="' + c.id + '" aria-current="' + (c.id === Menu.active) + '">' + cats[c.id] + '</button>';
+        return '<button type="button" class="tab" data-tab="' + c.id + '" aria-current="' + (c.id === Menu.active) + '">' + c[lang] + '</button>';
       }).join("");
       $("menu").innerHTML = MENU.map(function(c){
-        return '<section class="menu-section pad" id="sec-' + c.id + '" data-sec="' + c.id + '"><h2>' + cats[c.id] + '</h2>' +
+        return '<section class="menu-section pad" id="sec-' + c.id + '" data-sec="' + c.id + '"><h2>' + c[lang] + '</h2>' +
           c.items.map(function(i){
-            var hay = (i.ar.join(" ") + " " + i.en.join(" ")).toLowerCase();
-            return '<div class="item" data-row="' + i.id + '" data-search="' + hay + '">' +
-              leader('<h3>' + nm(i) + (i.tag ? '<span class="tag">' + T("egyptian") + '</span>' : '') + '</h3>', '<span class="price">' + money(i.price) + '</span>') +
-              '<p class="desc">' + ds(i) + '</p></div>';
+            var hay = (i.ar + " " + i.en + " " + c.ar + " " + c.en).toLowerCase();
+            var pic = i.img ? '<img class="thumb" src="assets/' + i.img + '" alt="" width="80" height="80" loading="lazy" decoding="async">' : '<span class="thumb thumb-empty" aria-hidden="true"></span>';
+            var list = i.p.length > 1 ? '<ul class="sizes">' + i.p.map(function(x){
+              return '<li><span>' + sizes[x[0]] + '</span> <b>' + x[1] + '</b></li>';
+            }).join("") + '</ul>' : '';
+            return '<div class="item" data-row="' + i.id + '" data-search="' + hay + '">' + pic +
+              '<div class="item-body">' + leader('<h3>' + nm(i) + '</h3>', '<span class="price">' + priceText(i) + '</span>') + list + '</div></div>';
           }).join("") + '</section>';
       }).join("") + '<p class="empty pad" id="empty" hidden></p>';
       Menu.applySearch();
@@ -293,8 +436,15 @@
           leader('<span>' + days[d] + (isToday ? '<span class="today-tag">' + T("today") + '</span>' : '') + '</span>', '<span>' + hoursRange(h) + '</span>') +
         '</li>';
       }).join("");
-      $("kvRows").innerHTML = [["addressL", "addressV"], ["phoneL", "phoneV"]].map(function(p){
-        return '<div class="kv-row">' + leader('<span class="k">' + T(p[0]) + '</span>', '<span class="v">' + T(p[1]) + '</span>') + '</div>';
+      var rows = [
+        [T("addressL"), T("addressV")],
+        [T("mapL"), ext(CONTACT.maps, T("mapV"))],
+        [T("phoneL"), '<a href="tel:' + CONTACT.phone + '" dir="ltr">' + CONTACT.phoneShown + '</a>'],
+        [T("whatsappL"), ext(CONTACT.whatsapp, T("whatsappV"))],
+        [T("instagramL"), '<span dir="ltr">' + ext(CONTACT.instagram, CONTACT.instagramShown) + '</span>']
+      ];
+      $("kvRows").innerHTML = rows.map(function(r){
+        return '<div class="kv-row">' + leader('<span class="k">' + r[0] + '</span>', '<span class="v">' + r[1] + '</span>') + '</div>';
       }).join("");
     }
   };
