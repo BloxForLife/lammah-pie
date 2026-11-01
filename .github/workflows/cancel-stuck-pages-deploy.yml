@@ -1,0 +1,34 @@
+# Run by hand (Actions tab -> "Cancel stuck Pages deploy" -> Run workflow) when GitHub Pages
+# refuses new deploys with "due to in progress deployment. Please cancel <commit> first".
+# Paste that commit ID. This only cancels the stuck deploy; it does not publish anything.
+name: Cancel stuck Pages deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: "Commit ID of the stuck deploy (from the error message)"
+        required: true
+
+permissions:
+  pages: write
+  contents: read
+
+jobs:
+  cancel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel the Pages deploy
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT: ${{ inputs.commit }}
+        run: |
+          code=$(curl -sS -o response.txt -w "%{http_code}" -X POST \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${{ github.repository }}/pages/deployments/$COMMIT/cancel")
+          echo "GitHub answered: $code"
+          cat response.txt
+          if [ "$code" != "204" ]; then exit 1; fi
+          echo "Stuck deploy cancelled."
