@@ -16,6 +16,8 @@
       hoursAddress: "الأوقات والعنوان",
       featureNote: "على الطريقة المصرية، ينخبز وقت ما تطلب.",
       seeOnMenu: "شوف الفطائر الحلوة",
+      orderHS: "اطلب عبر هنقرستيشن",
+      orderHSNote: "التوصيل عن طريق تطبيق هنقرستيشن.",
       menuTitle: "المنيو",
       visitTitle: "زورونا",
       todayL: "اليوم",
@@ -52,6 +54,8 @@
       hoursAddress: "Hours & address",
       featureNote: "Egyptian style, baked when you order.",
       seeOnMenu: "See the sweet feteer",
+      orderHS: "Order on HungerStation",
+      orderHSNote: "Delivery is handled by the HungerStation app.",
       menuTitle: "The menu",
       visitTitle: "Visit us",
       todayL: "Today",
@@ -113,6 +117,12 @@
     { o: 7, c: 26 }, { o: 13, c: 26 }, { o: 7, c: 26 }
   ];
 
+  /* The shop's HungerStation page, one link per language (opens in a new tab). */
+  var HUNGERSTATION = {
+    ar: "https://hungerstation.com/sa-ar/restaurants/regions/%D8%A7%D9%84%D9%86%D8%B9%D9%8A%D8%B1%D9%8A%D8%A9/%D8%A7%D9%84%D8%B5%D9%86%D8%A7%D8%B9%D9%8A%D8%A9/%D9%81%D8%B7%D8%A7%D8%A6%D8%B1-%D9%84%D9%85%D8%A9-180411",
+    en: "https://hungerstation.com/sa-en/restaurants/regions/alnuayreayh/industrial/lamma-pies-180411"
+  };
+
   var ALL = {};
   MENU.forEach(function(c){ c.items.forEach(function(i){ ALL[i.id] = i; }); });
 
@@ -162,6 +172,7 @@
       el.placeholder = v;
       el.setAttribute("aria-label", v);
     });
+    document.querySelectorAll("[data-hs]").forEach(function(a){ a.href = HUNGERSTATION[lang]; });
     document.querySelectorAll("[data-nav]").forEach(function(a){
       if (a.getAttribute("data-nav") === page) a.setAttribute("aria-current", "page");
       else a.removeAttribute("aria-current");
