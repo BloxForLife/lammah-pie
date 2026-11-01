@@ -113,6 +113,7 @@ html[lang="ar"] .brand-name{position:absolute;width:1px;height:1px;overflow:hidd
 .empty{color:var(--muted);text-align:center;padding-block:36px}
 .hs-block{padding-block:20px 22px;border-top:1px solid var(--line)}
 .hs-note{color:var(--muted);font-size:.82rem;text-align:center;margin-top:8px}
+.home-actions .hs-note{margin-top:-4px}
 
 
 
