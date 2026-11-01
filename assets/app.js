@@ -336,7 +336,7 @@
       if (fi && f.img) { fi.src = "assets/" + f.img; fi.hidden = false; }
       $("catRows").innerHTML = MENU.map(function(c){
         var min = Math.min.apply(null, c.items.map(low));
-        return '<a class="cat-row" href="menu.html#' + c.id + '">' +
+        return '<a class="cat-row" href="menu#' + c.id + '">' +
           leader('<strong>' + c[lang] + '</strong>', '<span class="meta">' + itemsCount(c.items.length) + (lang === "ar" ? "، " : ", ") + T("itemsFrom") + ' ' + money(min) + '</span>') +
         '</a>';
       }).join("");
