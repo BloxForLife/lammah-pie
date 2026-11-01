@@ -200,7 +200,7 @@
       { id: "pizza-12", ar: "بيتزا مرجريتا", en: "Margherita pizza", p: [["s",12],["m",20],["l",27],["crust",30]], img: "menu/pizza-12.jpg" }
     ]},
     { id: "drinks", ar: "المشروبات", en: "Drinks", items: [
-      { id: "drinks-1", ar: "عصير ربيع", en: "Rabea juice", p: [["",2]], img: "menu/drinks-1.jpg" },
+      { id: "drinks-1", ar: "عصير ربيع", en: "Al Rabie juice", p: [["",2]], img: "menu/drinks-1.jpg" },
       { id: "drinks-2", ar: "ديو", en: "Mountain Dew", p: [["s",3],["fam",12]], img: "menu/drinks-2.jpg" },
       { id: "drinks-3", ar: "سڤن اب", en: "7UP", p: [["s",3],["fam",12]], img: "menu/drinks-3.jpg" },
       { id: "drinks-4", ar: "حمضيات", en: "Citrus (Mirinda)", p: [["s",3],["fam",12]], img: "menu/drinks-4.jpg" },
@@ -208,7 +208,7 @@
     ]},
     { id: "fried", ar: "المقالي", en: "Fried", items: [
       { id: "fried-1", ar: "كبة", en: "Kibbeh", p: [["s",11],["m",21],["l",32]], img: "menu/fried-1.jpg" },
-      { id: "fried-2", ar: "كباجي", en: "Kebbaji", p: [["s",10],["m",20],["l",30]], img: "menu/fried-2.jpg" },
+      { id: "fried-2", ar: "كباجي", en: "Kabaji", p: [["s",10],["m",20],["l",30]], img: "menu/fried-2.jpg" },
       { id: "fried-3", ar: "صحن بطاطس", en: "Fries", p: [["s",5],["m",10],["l",15]], img: "menu/fried-3.jpg" },
       { id: "fried-4", ar: "سمبوسة", en: "Sambousa", p: [["s",10],["m",20],["l",30]], img: "menu/fried-4.jpg" },
       { id: "fried-5", ar: "ورق عنب", en: "Stuffed vine leaves", p: [["s",10],["m",20],["l",30]], img: "menu/fried-5.jpg" }
