@@ -25,7 +25,7 @@
       orderWA: "اطلب عبر واتساب",
       orderWANote: "يفتح واتساب ورسالة الطلب جاهزة، وأنت ترسلها للمحل.",
       waHello: "السلام عليكم، أبغى أطلب:", waFrom: "(من موقع فطائر لمة)",
-      directions: "الاتجاهات للمحل", directionsL: "الطريق", directionsV: "افتح الاتجاهات",
+      directions: "الاتجاهات للمحل",
       fab: "تواصل معنا", fabWA: "واتساب", fabCall: "اتصال",
       themeBtn: "تبديل الوضع الداكن",
       statsTitle: "إحصائيات الزوار", statsAll: "كل الزيارات", statsToday: "زيارات اليوم",
@@ -51,7 +51,7 @@
       days: ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"],
       contactTitle: "التواصل",
       addressL: "العنوان",
-      addressV: "حي الصناعية، النعيرية",
+      addressV: "طريق الملك عبدالعزيز، حي الصناعية، النعيرية",
       mapL: "الخريطة",
       mapV: "افتح في خرائط قوقل",
       phoneL: "الهاتف",
@@ -84,7 +84,7 @@
       orderWA: "Order on WhatsApp",
       orderWANote: "Opens WhatsApp with your order typed out. You send it to the shop.",
       waHello: "Hi, I'd like to order:", waFrom: "(from the Lamma Pies site)",
-      directions: "Directions to the shop", directionsL: "Directions", directionsV: "Open directions",
+      directions: "Directions to the shop",
       fab: "Contact us", fabWA: "WhatsApp", fabCall: "Call",
       themeBtn: "Switch dark mode",
       statsTitle: "Visitor stats", statsAll: "All visits", statsToday: "Visits today",
@@ -110,7 +110,7 @@
       days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
       contactTitle: "Contact",
       addressL: "Address",
-      addressV: "Industrial district, Nairyah",
+      addressV: "King Abdulaziz Rd, Industrial district, Nairyah",
       mapL: "Map",
       mapV: "Open in Google Maps",
       phoneL: "Phone",
@@ -277,9 +277,10 @@
     phone: "0530011762",
     phoneShown: "053 001 1762",
     whatsapp: "https://wa.me/966530011762",
-    maps: "https://maps.app.goo.gl/b4xVdBizNN6Bj2VD6",
-    /* Coordinates of the shop's Google Maps pin (from the link above) */
-    directions: "https://www.google.com/maps/dir/?api=1&destination=27.4666027,48.4812884",
+    /* The shop's Google Maps listing (مطعم فطائر لمة، طريق الملك عبدالعزيز، الصناعية، النعيرية).
+       Opens the place page, where Google offers directions. */
+    maps: "https://maps.app.goo.gl/HSZGgbXF3GSNYUbr6",
+    directions: "https://maps.app.goo.gl/HSZGgbXF3GSNYUbr6",
     instagram: "https://www.instagram.com/lammapie/",
     instagramShown: "@lammapie"
   };
@@ -447,7 +448,7 @@
       }).join("");
       $("visitRows").innerHTML =
         '<div class="visit-row">' + leader('<span class="k">' + T("todayL") + '</span>', '<span class="v">' + hoursRange(HOURS[new Date().getDay()]) + '</span>') + '</div>' +
-        '<div class="visit-row">' + leader('<span class="k">' + T("addressL") + '</span>', '<span class="v">' + ext(CONTACT.maps, T("addressV")) + '</span>') + '</div>';
+        '<div class="visit-row">' + leader('<span class="k">' + T("addressL") + '</span>', '<span class="v"><a href="' + CONTACT.maps + '" target="_blank" rel="noopener" data-track="dir">' + T("addressV") + '</a></span>') + '</div>';
     }
   };
 
@@ -573,8 +574,7 @@
       }).join("");
       var rows = [
         [T("addressL"), T("addressV")],
-        [T("mapL"), ext(CONTACT.maps, T("mapV"))],
-        [T("directionsL"), '<a href="' + CONTACT.directions + '" target="_blank" rel="noopener" data-track="dir">' + T("directionsV") + '</a>'],
+        [T("mapL"), '<a href="' + CONTACT.maps + '" target="_blank" rel="noopener" data-track="dir">' + T("mapV") + '</a>'],
         [T("phoneL"), '<a href="tel:' + CONTACT.phone + '" dir="ltr" data-track="call">' + CONTACT.phoneShown + '</a>'],
         [T("whatsappL"), ext(CONTACT.whatsapp, T("whatsappV"))],
         [T("instagramL"), '<span dir="ltr">' + ext(CONTACT.instagram, CONTACT.instagramShown) + '</span>']
