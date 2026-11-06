@@ -18,6 +18,22 @@
       seeOnMenu: "شوف كل الكريب",
       orderHS: "اطلب عبر هنقرستيشن",
       orderHSNote: "التوصيل عن طريق هنقرستيشن. أسعار التطبيق أعلى من أسعار المحل بسبب رسوم الخدمة.",
+      filters: { all: "الكل", sweet: "حلو", savory: "مالح", nomeat: "بدون لحم", cheap: "10 ر.س وأقل" },
+      tagHot: "حار 🌶️", tagVeg: "بدون لحم 🌱", tagSig: "خاص لمة", tagPop: "الأكثر طلباً",
+      kcal: "حوالي {n} سعرة (حسب هنقرستيشن)",
+      choose: "اختر", qty: "الكمية", total: "المجموع", close: "إغلاق",
+      orderWA: "اطلب عبر واتساب",
+      orderWANote: "يفتح واتساب ورسالة الطلب جاهزة، وأنت ترسلها للمحل.",
+      waHello: "السلام عليكم، أبغى أطلب:", waFrom: "(من موقع فطائر لمة)",
+      directions: "الاتجاهات للمحل", directionsL: "الطريق", directionsV: "افتح الاتجاهات",
+      fab: "تواصل معنا", fabWA: "واتساب", fabCall: "اتصال",
+      themeBtn: "تبديل الوضع الداكن",
+      statsTitle: "إحصائيات الزوار", statsAll: "كل الزيارات", statsToday: "زيارات اليوم",
+      statsHome: "الرئيسية", statsMenu: "المنيو", statsInfo: "المعلومات",
+      statsWA: "ضغطات واتساب", statsHS: "ضغطات هنقرستيشن", statsCall: "ضغطات الاتصال", statsDir: "ضغطات الاتجاهات",
+      statsMe: "لا تحسب زياراتي من هذا الجهاز",
+      statsNote: "أرقام تقريبية تبدأ من يوم تشغيل العداد. ما فيه أي بيانات شخصية.",
+      statsErr: "ما قدرنا نجيب الأرقام الحين.",
       menuTitle: "المنيو",
       visitTitle: "زورونا",
       todayL: "اليوم",
@@ -61,6 +77,22 @@
       seeOnMenu: "See all crepes",
       orderHS: "Order on HungerStation",
       orderHSNote: "Delivery is through HungerStation. App prices are higher than in-shop prices because of service fees.",
+      filters: { all: "All", sweet: "Sweet", savory: "Savory", nomeat: "No meat", cheap: "SAR 10 or less" },
+      tagHot: "Spicy 🌶️", tagVeg: "No meat 🌱", tagSig: "Lamma special", tagPop: "Popular",
+      kcal: "About {n} calories (from HungerStation)",
+      choose: "Choose", qty: "Quantity", total: "Total", close: "Close",
+      orderWA: "Order on WhatsApp",
+      orderWANote: "Opens WhatsApp with your order typed out. You send it to the shop.",
+      waHello: "Hi, I'd like to order:", waFrom: "(from the Lamma Pies site)",
+      directions: "Directions to the shop", directionsL: "Directions", directionsV: "Open directions",
+      fab: "Contact us", fabWA: "WhatsApp", fabCall: "Call",
+      themeBtn: "Switch dark mode",
+      statsTitle: "Visitor stats", statsAll: "All visits", statsToday: "Visits today",
+      statsHome: "Home", statsMenu: "Menu", statsInfo: "Info",
+      statsWA: "WhatsApp taps", statsHS: "HungerStation taps", statsCall: "Call taps", statsDir: "Directions taps",
+      statsMe: "Don't count my visits on this device",
+      statsNote: "Rough numbers, counted from the day the counter started. No personal data.",
+      statsErr: "Couldn't load the numbers right now.",
       menuTitle: "The menu",
       visitTitle: "Visit us",
       todayL: "Today",
@@ -246,6 +278,8 @@
     phoneShown: "053 001 1762",
     whatsapp: "https://wa.me/966530011762",
     maps: "https://maps.app.goo.gl/b4xVdBizNN6Bj2VD6",
+    /* Coordinates of the shop's Google Maps pin (from the link above) */
+    directions: "https://www.google.com/maps/dir/?api=1&destination=27.4666027,48.4812884",
     instagram: "https://www.instagram.com/lammapie/",
     instagramShown: "@lammapie"
   };
@@ -259,6 +293,49 @@
   var ALL = {};
   MENU.forEach(function(c){ c.items.forEach(function(i){ ALL[i.id] = i; }); });
   var FEATURED = "crepes-1";
+
+  /* Extra facts per item.
+     sweet / nomeat / hot: used for labels and filters. Only set where the name or the shop's
+       HungerStation description makes it clear (hot = only "spicy" in that description).
+     sig: named after the shop. pop: best sellers (none yet: ask the shop which ones).
+     kcal: calories from the shop's HungerStation listing (left out where it has no match). */
+  var META = {
+    "chicken-1": { kcal: 720 }, "chicken-2": { kcal: 680 }, "chicken-3": { kcal: 700 }, "chicken-4": { kcal: 630, hot: 1 },
+    "chicken-5": { kcal: 600 }, "chicken-6": { kcal: 610 }, "chicken-7": { kcal: 620 },
+    "crepes-1": { kcal: 650, sig: 1 }, "crepes-2": { kcal: 600 }, "crepes-3": { kcal: 550 }, "crepes-4": { kcal: 600 },
+    "crepes-5": { kcal: 650 }, "crepes-7": { kcal: 620 }, "crepes-8": { kcal: 610 }, "crepes-9": { kcal: 630, nomeat: 1 },
+    "crepes-10": { kcal: 640 }, "crepes-11": { kcal: 520, nomeat: 1 }, "crepes-12": { kcal: 700, sweet: 1, nomeat: 1 }, "crepes-13": { kcal: 600, sweet: 1, nomeat: 1 },
+    "meshaltet-1": { kcal: 820 }, "meshaltet-2": { kcal: 800 }, "meshaltet-3": { kcal: 800, sweet: 1, nomeat: 1 }, "meshaltet-4": { kcal: 770, sweet: 1, nomeat: 1 },
+    "meshaltet-5": { kcal: 780 }, "meshaltet-6": { kcal: 850, nomeat: 1 }, "meshaltet-8": { kcal: 860, sweet: 1, nomeat: 1 }, "meshaltet-9": { kcal: 600 },
+    "platters-1": { kcal: 650 }, "platters-2": { kcal: 900 }, "platters-3": { kcal: 750 },
+    "sfiha-1": { kcal: 4800 }, "sfiha-2": { kcal: 2400 }, "sfiha-3": { kcal: 1200 }, "sfiha-4": { kcal: 320 },
+    "meat-1": { kcal: 380 }, "meat-2": { kcal: 450 },
+    "falafel-1": { kcal: 420, nomeat: 1 }, "falafel-2": { kcal: 400, nomeat: 1 }, "falafel-3": { kcal: 430 },
+    "eggs-1": { kcal: 360 }, "eggs-2": { kcal: 340, nomeat: 1 }, "eggs-3": { kcal: 280, nomeat: 1 },
+    "spinach-1": { kcal: 300, nomeat: 1 }, "spinach-2": { kcal: 320, nomeat: 1 }, "spinach-3": { kcal: 260, nomeat: 1 },
+    "muhammara-1": { kcal: 300, nomeat: 1 }, "muhammara-2": { kcal: 280, nomeat: 1 }, "muhammara-3": { kcal: 240, nomeat: 1 },
+    "cheese-1": { kcal: 300, nomeat: 1 }, "cheese-2": { kcal: 300, nomeat: 1 }, "cheese-3": { kcal: 340, nomeat: 1 }, "cheese-4": { kcal: 310, nomeat: 1 },
+    "cheese-5": { kcal: 290, nomeat: 1 }, "cheese-6": { kcal: 330, nomeat: 1 }, "cheese-7": { kcal: 320, nomeat: 1 }, "cheese-8": { kcal: 250, nomeat: 1 }, "cheese-9": { kcal: 280, nomeat: 1 },
+    "potato-1": { kcal: 360, nomeat: 1 }, "potato-2": { kcal: 360, nomeat: 1 }, "potato-3": { kcal: 390, nomeat: 1 },
+    "fatteh-1": { kcal: 450, nomeat: 1 },
+    "pizza-1": { kcal: 880, sig: 1 }, "pizza-2": { kcal: 800 }, "pizza-3": { kcal: 730, nomeat: 1 }, "pizza-4": { kcal: 850 },
+    "pizza-5": { kcal: 760 }, "pizza-6": { kcal: 770 }, "pizza-7": { kcal: 780 }, "pizza-8": { kcal: 750 },
+    "pizza-9": { kcal: 800 }, "pizza-10": { kcal: 700, nomeat: 1 }, "pizza-11": { kcal: 820 }, "pizza-12": { kcal: 680, nomeat: 1 },
+    "drinks-1": { kcal: 120 }, "drinks-2": { kcal: 170 }, "drinks-3": { kcal: 140 }, "drinks-4": { kcal: 140 }, "drinks-5": { kcal: 150 },
+    "fried-2": { kcal: 380 }, "fried-3": { nomeat: 1 }, "fried-4": { kcal: 300 }, "fried-5": { kcal: 280 },
+    "sweet-1": { kcal: 470, sweet: 1, nomeat: 1 }, "sweet-2": { kcal: 430, sweet: 1, nomeat: 1 }, "sweet-3": { kcal: 450, sweet: 1, nomeat: 1 },
+    "zaatar-1": { kcal: 280, nomeat: 1 }, "zaatar-2": { kcal: 260, nomeat: 1 }, "zaatar-3": { kcal: 250, nomeat: 1 }, "zaatar-4": { kcal: 220, nomeat: 1 },
+    "labneh-1": { kcal: 240, nomeat: 1 }, "labneh-2": { kcal: 300, nomeat: 1 }, "labneh-3": { kcal: 200, nomeat: 1 }, "labneh-4": { kcal: 260, nomeat: 1 }, "labneh-5": { kcal: 220, nomeat: 1 }
+  };
+  function meta(i){ return META[i.id] || {}; }
+  function catOf(i){ return i.id.split("-")[0]; }
+
+  /* Offers banner: set to { ar: "...", en: "..." } to show it on the home page; null hides it. */
+  var OFFER = null;
+
+  /* Private visitor counter (abacus.jasoncameron.dev, free, no account). Counts only on the live site.
+     Open the stats by tapping the footer line 5 times quickly. */
+  var COUNTER = { ns: "bloxforlife-lammah-pie", host: "bloxforlife.github.io" };
 
   /* ---------- Saved language (this browser only) ---------- */
   var page = document.body.getAttribute("data-page") || "home";
@@ -275,6 +352,29 @@
   function oneprice(i){ return i.p.every(function(x){ return x[1] === i.p[0][1]; }); }
   function priceText(i){ return oneprice(i) ? money(i.p[0][1]) : T("itemsFrom") + " " + money(low(i)); }
   function ext(href, text){ return '<a href="' + href + '" target="_blank" rel="noopener">' + text + '</a>'; }
+  function esc(t){ return String(t).replace(/[&<>"]/g, function(ch){ return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]; }); }
+  function tagsHtml(i){
+    var m = meta(i), out = [];
+    if (m.pop) out.push('<span class="tag">' + T("tagPop") + '</span>');
+    if (m.sig) out.push('<span class="tag tag-sig">' + T("tagSig") + '</span>');
+    if (m.hot) out.push('<span class="tag tag-hot">' + T("tagHot") + '</span>');
+    if (m.nomeat) out.push('<span class="tag tag-veg">' + T("tagVeg") + '</span>');
+    return out.length ? '<div class="tags">' + out.join("") + '</div>' : '';
+  }
+  var ICON_CHAT = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.2A8 8 0 1 1 20 11.5z"/></svg>';
+  var ICON_PHONE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>';
+
+  /* ---------- Visitor counter ---------- */
+  function counting(){
+    if (location.hostname !== COUNTER.host) return false;
+    try { if (localStorage.getItem("lamma-nocount") === "1") return false; } catch (e) {}
+    return true;
+  }
+  function count(key){
+    if (!counting()) return;
+    try { fetch("https://abacus.jasoncameron.dev/hit/" + COUNTER.ns + "/" + key, { keepalive: true, mode: "cors" }).catch(function(){}); } catch (e) {}
+  }
+  function todayKey(){ return "day-" + new Date(Date.now() + 3 * 36e5).toISOString().slice(0, 10); }
   function itemsCount(n){ return lang === "ar" ? n + " أصناف" : n + " items"; }
   function reduced(){ return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches; }
   function leader(left, right){
@@ -312,6 +412,9 @@
       el.setAttribute("aria-label", v);
     });
     document.querySelectorAll("[data-hs]").forEach(function(a){ a.href = HUNGERSTATION[lang]; });
+    document.querySelectorAll("[data-dir]").forEach(function(a){ a.href = CONTACT.directions; });
+    document.querySelectorAll("[data-theme-btn]").forEach(function(b){ b.setAttribute("aria-label", T("themeBtn")); b.title = T("themeBtn"); });
+    Fab.render();
     document.querySelectorAll("[data-nav]").forEach(function(a){
       if (a.getAttribute("data-nav") === page) a.setAttribute("aria-current", "page");
       else a.removeAttribute("aria-current");
@@ -329,6 +432,8 @@
   /* ---------- Home ---------- */
   var Home = {
     render: function(){
+      var off = $("offer");
+      if (off) { off.hidden = !OFFER; if (OFFER) off.textContent = OFFER[lang]; }
       var f = ALL[FEATURED];
       document.querySelector("[data-feat-name]").textContent = nm(f);
       document.querySelector("[data-feat-price]").textContent = priceText(f);
@@ -348,9 +453,24 @@
 
   /* ---------- Menu ---------- */
   var Menu = {
-    active: MENU[0].id, io: null, lock: false, timer: null,
+    active: MENU[0].id, io: null, lock: false, timer: null, filter: "all",
     init: function(){
       $("search").addEventListener("input", Menu.applySearch);
+      $("filters").addEventListener("click", function(e){
+        var b = e.target.closest("[data-filter]");
+        if (!b) return;
+        Menu.filter = b.getAttribute("data-filter");
+        Menu.renderFilters();
+        Menu.applySearch();
+      });
+      $("menu").addEventListener("click", function(e){
+        var r = e.target.closest("[data-open]");
+        if (r) Sheet.open(r.getAttribute("data-open"), r);
+      });
+      $("menu").addEventListener("keydown", function(e){
+        var r = e.target.closest("[data-open]");
+        if (r && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); Sheet.open(r.getAttribute("data-open"), r); }
+      });
       $("tabsInner").addEventListener("click", function(e){
         var t = e.target.closest("[data-tab]");
         if (t) Menu.go(t.getAttribute("data-tab"));
@@ -365,8 +485,23 @@
       clearTimeout(Menu.timer);
       Menu.timer = setTimeout(function(){ Menu.lock = false; }, 900);
     },
+    renderFilters: function(){
+      var f = T("filters");
+      $("filters").innerHTML = ["all", "sweet", "savory", "nomeat", "cheap"].map(function(k){
+        return '<button type="button" class="chip" data-filter="' + k + '" aria-pressed="' + (k === Menu.filter) + '">' + f[k] + '</button>';
+      }).join("");
+    },
+    passes: function(i){
+      var m = meta(i), f = Menu.filter;
+      if (f === "sweet") return !!m.sweet;
+      if (f === "savory") return !m.sweet && catOf(i) !== "drinks";
+      if (f === "nomeat") return !!m.nomeat;
+      if (f === "cheap") return low(i) <= 10;
+      return true;
+    },
     render: function(){
       var sizes = T("sizes");
+      Menu.renderFilters();
       $("tabsInner").innerHTML = MENU.map(function(c){
         return '<button type="button" class="tab" data-tab="' + c.id + '" aria-current="' + (c.id === Menu.active) + '">' + c[lang] + '</button>';
       }).join("");
@@ -378,8 +513,8 @@
             var list = i.p.length > 1 ? '<ul class="sizes">' + i.p.map(function(x){
               return '<li><span>' + sizes[x[0]] + '</span> <b>' + x[1] + '</b></li>';
             }).join("") + '</ul>' : '';
-            return '<div class="item" data-row="' + i.id + '" data-search="' + hay + '">' + pic +
-              '<div class="item-body">' + leader('<h3>' + nm(i) + '</h3>', '<span class="price">' + priceText(i) + '</span>') + list + '</div></div>';
+            return '<div class="item" role="button" tabindex="0" data-open="' + i.id + '" data-row="' + i.id + '" data-search="' + hay + '">' + pic +
+              '<div class="item-body">' + leader('<h3>' + nm(i) + '</h3>', '<span class="price">' + priceText(i) + '</span>') + list + tagsHtml(i) + '</div></div>';
           }).join("") + '</section>';
       }).join("") + '<p class="empty pad" id="empty" hidden></p>';
       Menu.applySearch();
@@ -390,7 +525,7 @@
       MENU.forEach(function(c){
         var sec = $("sec-" + c.id), vis = 0;
         sec.querySelectorAll("[data-row]").forEach(function(r){
-          var ok = !q || r.getAttribute("data-search").indexOf(q) > -1;
+          var ok = (!q || r.getAttribute("data-search").indexOf(q) > -1) && Menu.passes(ALL[r.getAttribute("data-row")]);
           r.hidden = !ok;
           if (ok) vis++;
         });
@@ -439,7 +574,8 @@
       var rows = [
         [T("addressL"), T("addressV")],
         [T("mapL"), ext(CONTACT.maps, T("mapV"))],
-        [T("phoneL"), '<a href="tel:' + CONTACT.phone + '" dir="ltr">' + CONTACT.phoneShown + '</a>'],
+        [T("directionsL"), '<a href="' + CONTACT.directions + '" target="_blank" rel="noopener" data-track="dir">' + T("directionsV") + '</a>'],
+        [T("phoneL"), '<a href="tel:' + CONTACT.phone + '" dir="ltr" data-track="call">' + CONTACT.phoneShown + '</a>'],
         [T("whatsappL"), ext(CONTACT.whatsapp, T("whatsappV"))],
         [T("instagramL"), '<span dir="ltr">' + ext(CONTACT.instagram, CONTACT.instagramShown) + '</span>']
       ];
@@ -449,19 +585,193 @@
     }
   };
 
+  /* ---------- Item sheet: big photo, sizes, quantity, order on WhatsApp ---------- */
+  var Sheet = {
+    el: null, item: null, size: 0, qty: 1, back: null,
+    open: function(id, from){
+      var i = ALL[id];
+      if (!i) return;
+      Sheet.item = i; Sheet.size = 0; Sheet.qty = 1; Sheet.back = from || null;
+      if (!Sheet.el) {
+        Sheet.el = document.createElement("div");
+        Sheet.el.className = "sheet-wrap";
+        Sheet.el.addEventListener("click", Sheet.onClick);
+        document.addEventListener("keydown", function(e){ if (e.key === "Escape" && Sheet.el && !Sheet.el.hidden) Sheet.close(); });
+        document.body.appendChild(Sheet.el);
+      }
+      Sheet.el.hidden = false;
+      document.documentElement.classList.add("no-scroll");
+      Sheet.draw();
+      var c = Sheet.el.querySelector(".sheet-close");
+      if (c) c.focus();
+    },
+    close: function(){
+      if (!Sheet.el) return;
+      Sheet.el.hidden = true;
+      document.documentElement.classList.remove("no-scroll");
+      if (Sheet.back) { try { Sheet.back.focus(); } catch (e) {} }
+    },
+    price: function(){ return Sheet.item.p[Sheet.size][1]; },
+    waText: function(){
+      var i = Sheet.item, sz = i.p[Sheet.size][0], sizes = T("sizes");
+      var name = lang === "ar" ? i.ar : i.en + " / " + i.ar;
+      var line = Sheet.qty + " × " + name + (sz ? " (" + sizes[sz] + ")" : "") + " = " + money(Sheet.qty * Sheet.price());
+      return T("waHello") + "\n" + line + "\n" + T("waFrom");
+    },
+    draw: function(){
+      var i = Sheet.item, m = meta(i), sizes = T("sizes");
+      var photo = i.img ? '<img class="sheet-photo" src="assets/' + i.img.replace("menu/", "menu/lg/") + '" alt="">' : '<div class="sheet-photo" aria-hidden="true"></div>';
+      var opts = i.p.length > 1 ? '<p class="sheet-label">' + T("choose") + '</p><div class="opts">' + i.p.map(function(x, k){
+        return '<button type="button" class="opt" data-size="' + k + '" aria-pressed="' + (k === Sheet.size) + '">' + sizes[x[0]] + '<small>' + money(x[1]) + '</small></button>';
+      }).join("") + '</div>' : '';
+      var wa = CONTACT.whatsapp + "?text=" + encodeURIComponent(Sheet.waText());
+      Sheet.el.innerHTML =
+        '<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">' +
+          '<div class="sheet-head">' + photo + '<button type="button" class="sheet-close" data-close aria-label="' + T("close") + '">✕</button></div>' +
+          '<div class="sheet-body">' +
+            '<h2 id="sheetTitle">' + esc(nm(i)) + '</h2>' +
+            '<p class="sheet-sub">' + esc(lang === "ar" ? i.en : i.ar) + '</p>' +
+            tagsHtml(i) +
+            (m.kcal ? '<p class="sheet-kcal">' + T("kcal").replace("{n}", m.kcal) + '</p>' : '') +
+            opts +
+            '<p class="sheet-label">' + T("qty") + '</p>' +
+            '<div class="qty"><button type="button" data-qty="-1" aria-label="−">−</button><output aria-live="polite">' + Sheet.qty + '</output><button type="button" data-qty="1" aria-label="+">+</button></div>' +
+            '<div class="sheet-total"><span>' + T("total") + '</span><b>' + money(Sheet.qty * Sheet.price()) + '</b></div>' +
+            '<a class="btn btn-wa" href="' + wa + '" target="_blank" rel="noopener" data-track="wa">' + ICON_CHAT + '<span>' + T("orderWA") + '</span></a>' +
+            '<p class="sheet-note">' + T("orderWANote") + '</p>' +
+          '</div>' +
+        '</div>';
+    },
+    onClick: function(e){
+      if (e.target === Sheet.el || e.target.closest("[data-close]")) { Sheet.close(); return; }
+      var s = e.target.closest("[data-size]");
+      if (s) { Sheet.size = +s.getAttribute("data-size"); Sheet.redraw("[data-size=\"" + Sheet.size + "\"]"); return; }
+      var q = e.target.closest("[data-qty]");
+      if (q) { Sheet.qty = Math.max(1, Math.min(20, Sheet.qty + +q.getAttribute("data-qty"))); Sheet.redraw("[data-qty=\"" + q.getAttribute("data-qty") + "\"]"); }
+    },
+    redraw: function(focusSel){
+      var top = Sheet.el.querySelector(".sheet").scrollTop;
+      Sheet.draw();
+      Sheet.el.querySelector(".sheet").scrollTop = top;
+      var f = Sheet.el.querySelector(focusSel);
+      if (f) f.focus();
+    }
+  };
+
+  /* ---------- Floating contact button (every page) ---------- */
+  var Fab = {
+    el: null, openState: false,
+    render: function(){
+      if (!Fab.el) {
+        Fab.el = document.createElement("div");
+        Fab.el.className = "fab";
+        Fab.el.addEventListener("click", function(e){
+          if (e.target.closest(".fab-main")) { Fab.openState = !Fab.openState; Fab.render(); }
+        });
+        document.addEventListener("click", function(e){
+          if (Fab.openState && !e.target.closest(".fab")) { Fab.openState = false; Fab.render(); }
+        });
+        document.body.appendChild(Fab.el);
+      }
+      Fab.el.innerHTML =
+        (Fab.openState ? '<div class="fab-opts">' +
+          '<a class="fab-opt" href="' + CONTACT.whatsapp + '" target="_blank" rel="noopener" data-track="fabwa">' + ICON_CHAT + T("fabWA") + '</a>' +
+          '<a class="fab-opt" href="tel:' + CONTACT.phone + '" data-track="call">' + ICON_PHONE + T("fabCall") + '</a>' +
+        '</div>' : '') +
+        '<button type="button" class="fab-main" aria-expanded="' + Fab.openState + '" aria-label="' + T("fab") + '">' + ICON_CHAT + '</button>';
+    }
+  };
+
+  /* ---------- Private stats panel (tap the footer 5 times) ---------- */
+  var Stats = {
+    taps: [], el: null,
+    tap: function(){
+      var now = Date.now();
+      Stats.taps = Stats.taps.filter(function(t){ return now - t < 3000; });
+      Stats.taps.push(now);
+      if (Stats.taps.length >= 5) { Stats.taps = []; Stats.open(); }
+    },
+    keys: function(){
+      return [["statsAll", "views"], ["statsToday", todayKey()], ["statsHome", "page-home"], ["statsMenu", "page-menu"], ["statsInfo", "page-info"],
+              ["statsWA", "tap-wa"], ["statsHS", "tap-hs"], ["statsCall", "tap-call"], ["statsDir", "tap-dir"]];
+    },
+    open: function(){
+      if (!Stats.el) {
+        Stats.el = document.createElement("div");
+        Stats.el.className = "sheet-wrap";
+        Stats.el.addEventListener("click", function(e){
+          if (e.target === Stats.el || e.target.closest("[data-close]")) Stats.close();
+        });
+        Stats.el.addEventListener("change", function(e){
+          if (e.target.id !== "noCount") return;
+          try { localStorage.setItem("lamma-nocount", e.target.checked ? "1" : "0"); } catch (err) {}
+        });
+        document.body.appendChild(Stats.el);
+      }
+      var me = false;
+      try { me = localStorage.getItem("lamma-nocount") === "1"; } catch (e) {}
+      Stats.el.hidden = false;
+      document.documentElement.classList.add("no-scroll");
+      Stats.el.innerHTML = '<div class="sheet stats" role="dialog" aria-modal="true" aria-labelledby="statsTitle"><div class="sheet-body">' +
+        '<div class="lead"><h2 id="statsTitle">' + T("statsTitle") + '</h2><span class="dots" aria-hidden="true" style="visibility:hidden"></span>' +
+        '<button type="button" class="opt" data-close>' + T("close") + '</button></div>' +
+        Stats.keys().map(function(k){
+          return '<div class="kv-row">' + leader('<span class="k">' + T(k[0]) + '</span>', '<span class="v" data-stat="' + k[1] + '">…</span>') + '</div>';
+        }).join("") +
+        '<label><input type="checkbox" id="noCount"' + (me ? " checked" : "") + '> ' + T("statsMe") + '</label>' +
+        '<p class="stats-note">' + T("statsNote") + '</p></div></div>';
+      Stats.el.querySelector("[data-close]").focus();
+      Stats.keys().forEach(function(k){
+        fetch("https://abacus.jasoncameron.dev/get/" + COUNTER.ns + "/" + k[1])
+          .then(function(r){ return r.json(); })
+          .then(function(d){ Stats.show(k[1], typeof d.value === "number" ? d.value : 0); })
+          .catch(function(){ Stats.show(k[1], null); });
+      });
+    },
+    show: function(key, v){
+      var el = Stats.el && Stats.el.querySelector('[data-stat="' + key + '"]');
+      if (el) el.textContent = v === null ? T("statsErr") : v.toLocaleString(lang === "ar" ? "ar-SA-u-nu-latn" : "en");
+    },
+    close: function(){
+      Stats.el.hidden = true;
+      document.documentElement.classList.remove("no-scroll");
+    }
+  };
+
+  /* ---------- Dark mode: follows the phone unless the moon button picked one ---------- */
+  function toggleTheme(){
+    var root = document.documentElement, cur = root.getAttribute("data-theme");
+    var dark = cur ? cur === "dark" : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    var next = dark ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("lamma-theme", next); } catch (e) {}
+  }
+
   /* ---------- Wiring ---------- */
   var P = { home: Home, menu: Menu, info: Info }[page] || Home;
 
   document.addEventListener("click", function(e){
+    if (e.target.closest("[data-theme-btn]")) { toggleTheme(); return; }
+    if (e.target.closest(".foot")) { Stats.tap(); return; }
+    var t = e.target.closest("[data-track],[data-hs],[data-dir]");
+    if (t) count("tap-" + (t.getAttribute("data-track") || (t.hasAttribute("data-hs") ? "hs" : "dir")).replace("fabwa", "wa"));
     if (!e.target.closest("[data-lang]")) return;
     lang = lang === "ar" ? "en" : "ar";
     saveLang();
     renderCommon();
     P.render();
+    if (Sheet.el && !Sheet.el.hidden) Sheet.draw();
   });
 
   renderCommon();
   if (P.init) P.init();
   P.render();
   if (P.afterFirstRender) P.afterFirstRender();
+
+  count("views"); count(todayKey()); count("page-" + page);
+
+  /* Works offline and can be added to the home screen */
+  if ("serviceWorker" in navigator && location.protocol === "https:") {
+    window.addEventListener("load", function(){ navigator.serviceWorker.register("sw.js").catch(function(){}); });
+  }
 })();
