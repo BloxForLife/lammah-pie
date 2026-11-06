@@ -660,25 +660,40 @@
 
   /* ---------- Floating contact button (every page) ---------- */
   var Fab = {
-    el: null, openState: false,
+    el: null,
     render: function(){
       if (!Fab.el) {
         Fab.el = document.createElement("div");
         Fab.el.className = "fab";
+        document.body.appendChild(Fab.el);
         Fab.el.addEventListener("click", function(e){
-          if (e.target.closest(".fab-main")) { Fab.openState = !Fab.openState; Fab.render(); }
+          if (e.target.closest(".fab-main")) Fab.toggle();
         });
         document.addEventListener("click", function(e){
-          if (Fab.openState && !e.target.closest(".fab")) { Fab.openState = false; Fab.render(); }
+          if (Fab.isOpen() && !Fab.el.contains(e.target)) Fab.toggle(false);
         });
-        document.body.appendChild(Fab.el);
+        document.addEventListener("keydown", function(e){
+          if (e.key === "Escape" && Fab.isOpen()) Fab.toggle(false);
+        });
       }
+      var open = Fab.isOpen();
       Fab.el.innerHTML =
-        (Fab.openState ? '<div class="fab-opts">' +
+        '<div class="fab-opts" id="fabOpts"' + (open ? '' : ' hidden') + '>' +
           '<a class="fab-opt" href="' + CONTACT.whatsapp + '" target="_blank" rel="noopener" data-track="fabwa">' + ICON_CHAT + T("fabWA") + '</a>' +
           '<a class="fab-opt" href="tel:' + CONTACT.phone + '" data-track="call">' + ICON_PHONE + T("fabCall") + '</a>' +
-        '</div>' : '') +
-        '<button type="button" class="fab-main" aria-expanded="' + Fab.openState + '" aria-label="' + T("fab") + '">' + ICON_CHAT + '</button>';
+        '</div>' +
+        '<button type="button" class="fab-main" aria-controls="fabOpts" aria-expanded="' + open + '" aria-label="' + T("fab") + '">' + ICON_CHAT + '</button>';
+    },
+    isOpen: function(){
+      var o = Fab.el && Fab.el.querySelector(".fab-opts");
+      return !!o && !o.hidden;
+    },
+    toggle: function(force){
+      var o = Fab.el.querySelector(".fab-opts"), b = Fab.el.querySelector(".fab-main");
+      var open = typeof force === "boolean" ? force : o.hidden;
+      o.hidden = !open;
+      b.setAttribute("aria-expanded", String(open));
+      b.classList.toggle("is-open", open);
     }
   };
 
